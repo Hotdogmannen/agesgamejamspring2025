@@ -19,15 +19,16 @@ public partial class PlayerTestController : CharacterBody3D
 		}
 		if(Input.IsActionPressed("move_forward"))
 		{
-			dir.Z += 10;
+			dir.Z -= 10;
 		}
 		if(Input.IsActionPressed("move_backward"))
 		{
-			dir.Z -= 10;
+			dir.Z += 10;
 		}
 
 		dir = dir.Normalized();
 
 		Velocity = dir * _speed;
+		MoveAndSlide();
 	}
 }
