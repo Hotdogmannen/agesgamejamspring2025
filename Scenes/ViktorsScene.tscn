@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh2p6lk4o6j88"]
+[gd_scene load_steps=5 format=3 uid="uid://dh2p6lk4o6j88"]
 
 [ext_resource type="PackedScene" uid="uid://b02lh0nx4udpq" path="res://Scenes/Test stuff/PlayerTest.tscn" id="1_oj1wl"]
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_fjetg"]
+[ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/Test stuff/GhostShip.tscn" id="3_r5ndu"]
 
 [sub_resource type="Curve3D" id="Curve3D_fjetg"]
 
@@ -18,10 +19,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13612, 2.16441, 7.72822)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.936648, -0.270388, 0.222669, 0, 0.635701, 0.771935, -0.350273, -0.723031, 0.595428, 0, 0, 0)
 
-[node name="SaveAndLoad" type="Node3D" parent="." node_paths=PackedStringArray("_target")]
+[node name="SaveAndLoad" type="Node3D" parent="." node_paths=PackedStringArray("_target", "_ghostpathNode", "_ghostShip")]
 script = ExtResource("2_fjetg")
 _target = NodePath("../PlayerTestController")
+_ghostpathNode = NodePath("../GhostPath")
 _timeBetweenSaves = 0.5
+_ghostShip = NodePath("../GhostShip")
 
-[node name="PathLoader" type="Path3D" parent="."]
+[node name="GhostPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_fjetg")
+
+[node name="GhostShip" parent="." instance=ExtResource("3_r5ndu")]

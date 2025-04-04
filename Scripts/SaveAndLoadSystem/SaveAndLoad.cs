@@ -8,6 +8,7 @@ public partial class SaveAndLoad : Node
 	[Export] private Node3D _target { get; set; }
 	[Export] private Path3D _ghostpathNode { get; set; }
 	[Export] private float _timeBetweenSaves { get; set; } = 1.0f;
+	[Export] private GhostShip _ghostShip { get; set; }
 	private List<Vector3> _playerPositions = new List<Vector3>();
 
 	private bool _isSaving = false;
@@ -16,7 +17,10 @@ public partial class SaveAndLoad : Node
 
     public override void _Ready()
     {
-		
+		LoadData();
+
+		_ghostShip.Init(_playerPositions, _timeBetweenSaves);
+		_ghostShip.StartGhost();
     }
 
 	public void StartSaving()

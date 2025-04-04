@@ -32,18 +32,16 @@ public partial class GhostShip : Node3D
 		if(_playerPositions[_pathIndex].DistanceTo(Position) < _positionDifference)
 		{
 			_pathIndex++;
-
-
+			_lerpTime = 0.0f;
 			if(_playerPositions.Count-1 < _pathIndex)
 			{
 				_canMove = false;
 				return;
 			}
-
 		}
 
+		_lerpTime += (float)delta;
 
-
-		Position = Position.Lerp(_playerPositions[_pathIndex], _lerpTime);
+		Position = Position.Lerp(_playerPositions[_pathIndex], _lerpTime/_timeBetweenSaves);
     }
 }
