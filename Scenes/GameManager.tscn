@@ -1,20 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://vp1hgaqoi3fq"]
+[gd_scene load_steps=4 format=3 uid="uid://vp1hgaqoi3fq"]
 
 [ext_resource type="Script" uid="uid://bovayeuubnfm3" path="res://Scripts/GameManager.cs" id="1_m2tc1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwyv8"]
+font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_m2tc1"]
 font_size = 60
 
-[node name="GameManager" type="Node3D" node_paths=PackedStringArray("_countDownLabel", "_timer")]
+[node name="GameManager" type="Node3D" node_paths=PackedStringArray("_countDownLabel", "_levelTimer", "_levelTimerLabel")]
 script = ExtResource("1_m2tc1")
 _countDownTime = 6.0
-_countDownLabel = NodePath("CountDownCanvas/CountDownText")
-_timer = NodePath("Timer")
+_countDownLabel = NodePath("TimerCanvas/CountDownText")
+_levelTimer = NodePath("LevelTimer")
+_levelTimerLabel = NodePath("TimerCanvas/LevelTimer")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 300.0
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 11.0
+one_shot = true
 
-[node name="CountDownCanvas" type="Control" parent="."]
+[node name="TimerCanvas" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +27,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CountDownText" type="Label" parent="CountDownCanvas"]
+[node name="LevelTimer" type="Label" parent="TimerCanvas"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -333.0
+offset_right = 333.0
+offset_bottom = 110.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_bwyv8")
+horizontal_alignment = 1
+
+[node name="CountDownText" type="Label" parent="TimerCanvas"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,4 +56,4 @@ label_settings = SubResource("LabelSettings_m2tc1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="Timer" to="." method="OnTimerFinished"]
+[connection signal="timeout" from="LevelTimer" to="." method="OnTimerFinished"]

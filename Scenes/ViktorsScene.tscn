@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b02lh0nx4udpq" path="res://Scenes/Test stuff/PlayerTest.tscn" id="1_oj1wl"]
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_fjetg"]
-[ext_resource type="PackedScene" path="res://Scenes/Test stuff/GhostShip.tscn" id="3_r5ndu"]
+[ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/Test stuff/GhostShip.tscn" id="3_r5ndu"]
 
 [sub_resource type="Curve3D" id="Curve3D_fjetg"]
 

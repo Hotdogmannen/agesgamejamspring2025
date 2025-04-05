@@ -22,19 +22,28 @@ public partial class GameManager : Node3D
     public override void _Process(double delta)
     {
 		CountDown((float)delta);
+
+		UpdateLevelTimer();
     }
+
+	private void UpdateLevelTimer()
+	{
+		if(_levelTimer.TimeLeft > 0)
+		{
+			string timeText = "";
+			timeText += (int)_levelTimer.TimeLeft / 60 + ":";
+			
+			int sec = (int)_levelTimer.TimeLeft % 60;
+			if(sec < 10)
+				timeText += "0";
+			timeText += sec;
+
+			_levelTimerLabel.Text = timeText;
+		}
+	}
 
 	private void CountDown(float delta)
 	{
-		if(_levelTimer.TimeLeft >= 0)
-		{
-
-		}
-		else
-		{
-			
-		}
-
 		if(!_isCountdown)
 			return;
 
