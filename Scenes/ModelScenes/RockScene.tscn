@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://uo47rg2suig1"]
+[gd_scene load_steps=11 format=4 uid="uid://uo47rg2suig1"]
+
+[ext_resource type="Material" uid="uid://b2kvsc74ojmtc" path="res://Material/RockMaterial.tres" id="1_rawkx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r3dn"]
 
@@ -108,13 +110,16 @@ shadow_mesh = SubResource("ArrayMesh_tbkg1")
 transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, 0.134936, 0.164533, 6.11452)
 mesh = SubResource("ArrayMesh_dx6dk")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_rawkx")
 
 [node name="Rock2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, -0.329323, 1.11404, 0.184827)
 mesh = SubResource("ArrayMesh_sgeir")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_rawkx")
 
 [node name="Rock3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, 0.125143, 0.063885, -7.10098)
 mesh = SubResource("ArrayMesh_uv1s3")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_rawkx")
