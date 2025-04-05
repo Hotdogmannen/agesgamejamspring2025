@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://da43e2bkye1vy"]
+[gd_scene load_steps=10 format=3 uid="uid://da43e2bkye1vy"]
 
 [ext_resource type="Script" uid="uid://dug5vueortrpv" path="res://Scripts/MainMenu.cs" id="1_uv623"]
 [ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="2_mc63j"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bdlhr5py25n36" path="res://UI/Icons/PlayIcon.svg" id="5_q15nq"]
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="6_mb40c"]
 [ext_resource type="Texture2D" uid="uid://ctyp4vcywgbsr" path="res://UI/Icons/QuitIcon.svg" id="7_pbd8g"]
+[ext_resource type="Shader" uid="uid://dpwyl5jjdy4w1" path="res://Shaders/ScrollingTexture.gdshader" id="8_pbd8g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbd8g"]
+shader = ExtResource("8_pbd8g")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,7 +21,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uv623")
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pbd8g")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,29 +34,29 @@ texture = ExtResource("2_mc63j")
 
 [node name="ScreenTitle" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -552.0
-offset_top = 47.0
-offset_right = -47.0
-offset_bottom = 480.0
-grow_horizontal = 2
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.094
+anchor_right = 0.461
+anchor_bottom = 0.762
+offset_left = -0.496002
+offset_top = 0.0879974
+offset_right = -0.0720215
+offset_bottom = 0.223999
+grow_vertical = 2
 texture = ExtResource("3_mc63j")
-expand_mode = 1
+expand_mode = 2
+stretch_mode = 4
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = -1
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -560.0
-offset_top = -158.0
-offset_right = -273.0
-offset_bottom = 18.0
-grow_horizontal = 2
+offset_left = 46.0
+offset_top = -200.0
+offset_right = 333.0
+offset_bottom = -24.0
 grow_vertical = 0
 theme_override_constants/separation = 10
 alignment = 1
