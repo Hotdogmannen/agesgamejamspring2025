@@ -39,6 +39,7 @@ public partial class TestBoatController : RigidBody3D
     GpuParticles3D oarRightParticles;
     AudioStreamPlayer3D paddleAudioPlayerLeft;
     AudioStreamPlayer3D paddleAudioPlayerRight;
+    AudioStreamPlayer3D windAudioPlayer;
     Node3D graphicRoot;
     Camera3D camera;
 
@@ -55,6 +56,7 @@ public partial class TestBoatController : RigidBody3D
 
         paddleAudioPlayerLeft = GetNode<AudioStreamPlayer3D>("PaddleAudioStreamLeft");
         paddleAudioPlayerRight = GetNode<AudioStreamPlayer3D>("PaddleAudioStreamRight");
+        windAudioPlayer = GetNode<AudioStreamPlayer3D>("WindAudioStream");
 
         backParticles = GetNode<GpuParticles3D>("SplashParticlesBack");
         frontParticles = GetNode<GpuParticles3D>("SplashParticlesFront");
@@ -125,6 +127,17 @@ public partial class TestBoatController : RigidBody3D
 
         UpdateOarAnimation(delta);
         ApplyBobbingAnimation(delta);
+        SetWindAudio(velocityWeight);
+    }
+
+    private void SetWindAudio(float velocityWeight){
+        if(velocityWeight <= margin){
+                windAudioPlayer.Playing = false;
+        }
+        else{
+            if(!windAudioPlayer.Playing) windAudioPlayer.Playing = true;
+            windAudioPlayer.VolumeDb = Mathf.Lerp(-24,6,velocityWeight);
+        }
     }
 
     private void ApplyOarPower(double delta, float dir){
