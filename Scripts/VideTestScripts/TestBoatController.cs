@@ -28,6 +28,8 @@ public partial class TestBoatController : RigidBody3D
     private bool hasPlayedEffectLeft;
     float rightOarPower;
 
+    private bool _canMove = false;
+    
     private bool hasPlayedEffectRight;
     Node3D cameraNode;
     Node3D oarLeft;
@@ -66,68 +68,72 @@ public partial class TestBoatController : RigidBody3D
 
     public override void _Process(double delta)
     {
-        base._Process(delta);
-        bool rowingLeft = Input.IsActionPressed("move_left");
-        bool rowingRight = Input.IsActionPressed("move_right");
-        bool rowingBack = Input.IsActionPressed("move_backward");
-        
-        //ApplyForce(Vector3.Right*inputAxis);
-
-        if(rowingBack){
-            ApplyForce(Transform.Basis.Z*(ForwardForce/4f*(float)delta));
-        }
-
-        if(rowingLeft){
-            leftOarPower += (float)delta * oarSpeed;
-        }
-        else{
-            leftOarPower = 0;
-        }
-        if(rowingRight){
-            rightOarPower += (float)delta * oarSpeed;
-        }
-        else
+        if(_canMove)
         {
-            rightOarPower = 0;
-        }
-
-        if(rowingRight && rightOarPower > 0.5f && rightOarPower <= 1f){
-            ApplyOarPower(delta,1);
-            if(rightOarPower > 0.7f){
-                oarRightParticles.Emitting = true;
-                if(!hasPlayedEffectRight) paddleAudioPlayerRight.Play();
-                hasPlayedEffectRight = true;
-            }
-        }
-        else {
-            hasPlayedEffectRight = false;
-            oarRightParticles.Emitting = false;
-            }
-        if(rowingLeft && leftOarPower > 0.5f && leftOarPower <= 1f){
-            ApplyOarPower(delta,-1);
-            if(leftOarPower > 0.7f) {
-                oarLeftParticles.Emitting = true;
-                if(!hasPlayedEffectLeft) paddleAudioPlayerLeft.Play();
-                hasPlayedEffectLeft = true;
-            }
             
-        }
-        else {
-            hasPlayedEffectLeft = false;
-            oarLeftParticles.Emitting = false;
+            bool rowingLeft = Input.IsActionPressed("move_left");
+            bool rowingRight = Input.IsActionPressed("move_right");
+            bool rowingBack = Input.IsActionPressed("move_backward");
+            
+            //ApplyForce(Vector3.Right*inputAxis);
+
+            if(rowingBack){
+                ApplyForce(Transform.Basis.Z*(ForwardForce/4f*(float)delta));
             }
 
-        float velocityWeight = Fade(Math.Clamp(LinearVelocity.Length()/maxSpeedFOV,0f,1f));
-        
-        float targetFov = Mathf.Lerp(minFOV,maxFOV,velocityWeight);
-        camera.Fov = Mathf.Lerp(camera.Fov,targetFov,(float)delta * fovSharpness);
+            if(rowingLeft){
+                leftOarPower += (float)delta * oarSpeed;
+            }
+            else{
+                leftOarPower = 0;
+            }
+            if(rowingRight){
+                rightOarPower += (float)delta * oarSpeed;
+            }
+            else
+            {
+                rightOarPower = 0;
+            }
 
-        frontParticles.AmountRatio = velocityWeight > 0.7f ? velocityWeight : 0f;
-        backParticles.AmountRatio = velocityWeight/2f;
+            if(rowingRight && rightOarPower > 0.5f && rightOarPower <= 1f){
+                ApplyOarPower(delta,1);
+                if(rightOarPower > 0.7f){
+                    oarRightParticles.Emitting = true;
+                    if(!hasPlayedEffectRight) paddleAudioPlayerRight.Play();
+                    hasPlayedEffectRight = true;
+                }
+            }
+            else {
+                hasPlayedEffectRight = false;
+                oarRightParticles.Emitting = false;
+                }
+            if(rowingLeft && leftOarPower > 0.5f && leftOarPower <= 1f){
+                ApplyOarPower(delta,-1);
+                if(leftOarPower > 0.7f) {
+                    oarLeftParticles.Emitting = true;
+                    if(!hasPlayedEffectLeft) paddleAudioPlayerLeft.Play();
+                    hasPlayedEffectLeft = true;
+                }
+                
+            }
+            else {
+                hasPlayedEffectLeft = false;
+                oarLeftParticles.Emitting = false;
+                }
 
-        UpdateOarAnimation(delta);
+            float velocityWeight = Fade(Math.Clamp(LinearVelocity.Length()/maxSpeedFOV,0f,1f));
+            
+            float targetFov = Mathf.Lerp(minFOV,maxFOV,velocityWeight);
+            camera.Fov = Mathf.Lerp(camera.Fov,targetFov,(float)delta * fovSharpness);
+
+            frontParticles.AmountRatio = velocityWeight > 0.7f ? velocityWeight : 0f;
+            backParticles.AmountRatio = velocityWeight/2f;
+            
+            UpdateOarAnimation(delta);
+            SetWindAudio(velocityWeight);
+        }
+
         ApplyBobbingAnimation(delta);
-        SetWindAudio(velocityWeight);
     }
 
     private void SetWindAudio(float velocityWeight){
@@ -198,5 +204,8 @@ public partial class TestBoatController : RigidBody3D
         cameraNode.Basis = new Basis(q1.Slerp(q2,rotWeight));
     }
 
-    public static float Fade(float t) => t * t * t * (t * (t * 6 - 15) + 10);       
+    public static float Fade(float t) => t * t * t * (t * (t * 6 - 15) + 10);    
+
+    public void SetCanMove() => _canMove = true;
+    public void SetCantMove(int type, float time) => _canMove = false;
 }

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cxft3jrlqxa36" path="res://Scripts/VideTestScripts/TestBoatController.cs" id="1_xkpi8"]
 [ext_resource type="Material" path="res://Material/SeatMaterial.tres" id="2_8hoai"]
 [ext_resource type="Script" uid="uid://ctm7y24pyjmvy" path="res://addons/TrailRenderer/Runtime/GD/trail_renderer.gd" id="2_p1rwh"]
-[ext_resource type="PackedScene" uid="uid://bnsf3btepveql" path="res://Scenes/VideTestStuff/splash_particles.tscn" id="2_tcm7h"]
+[ext_resource type="PackedScene" path="res://Scenes/VideTestStuff/splash_particles.tscn" id="2_tcm7h"]
 [ext_resource type="Material" path="res://Material/BoatMaterial.tres" id="3_0fg3l"]
 [ext_resource type="Material" path="res://Material/OarMaterial.tres" id="4_yhajs"]
 [ext_resource type="AudioStream" uid="uid://m8h2i4gxru4f" path="res://Audio/paddle0.wav" id="7_yhajs"]
