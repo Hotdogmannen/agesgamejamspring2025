@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cief444xrlec"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ck70jlwfynm0u"]
 
 [ext_resource type="Shader" uid="uid://bhheotn0xwqga" path="res://Shaders/WaterShader.tres" id="1_kwvru"]
 [ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="2_7sjtv"]

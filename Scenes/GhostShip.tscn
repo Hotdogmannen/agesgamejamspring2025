@@ -1,9 +1,8 @@
-[gd_scene load_steps=60 format=4 uid="uid://c0ome0na4fvjv"]
+[gd_scene load_steps=59 format=4 uid="uid://c0ome0na4fvjv"]
 
 [ext_resource type="Script" uid="uid://t0nd3lgehw7k" path="res://Scripts/GhostShip.cs" id="1_qy465"]
 [ext_resource type="Material" uid="uid://hsnanb220fnp" path="res://Material/GhostBoat/GhostSeatMaterial.tres" id="2_aykx6"]
 [ext_resource type="Material" uid="uid://cwolubjrpks4r" path="res://Material/GhostBoat/GhostBoatMaterial.tres" id="3_xlx71"]
-[ext_resource type="Material" path="res://Material/OarMaterial.tres" id="4_xlx71"]
 [ext_resource type="Material" uid="uid://yjckhfnx38i2" path="res://Material/GhostBoat/GhostRopeMaterial.tres" id="5_u4847"]
 [ext_resource type="Material" uid="uid://co3wriwu6w8wf" path="res://Material/GhostBoat/GhostOarMaterial.tres" id="6_2j6j1"]
 
@@ -629,7 +628,7 @@ oarLeft = NodePath("OarLeft")
 oarRight = NodePath("OarRight")
 
 [node name="Boat" type="Node3D" parent="."]
-transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, -0.489329, 0)
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, -0.389, 0)
 
 [node name="Backseat" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(24.4845, 1.97025e-12, 5.7485e-07, 2.14051e-06, -2.47915e-05, -6.57551, 0, -138.644, 7.83862e-07, 0.744207, 0.445321, 0)
@@ -645,7 +644,7 @@ skeleton = NodePath("")
 
 [node name="Floor" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100.439, 0, 0, 0, -1.52582e-05, 3.47039, 0, -127.995, -4.13702e-07, -0.224555, 0.0717822, 0)
-material_override = ExtResource("4_xlx71")
+material_override = ExtResource("6_2j6j1")
 mesh = SubResource("ArrayMesh_bp7p8")
 skeleton = NodePath("")
 
@@ -734,7 +733,7 @@ mesh = SubResource("ArrayMesh_045et")
 skeleton = NodePath("")
 
 [node name="OarRight" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.657405, -0.0863517, -0.0846616)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.657, 0, -0.085)
 
 [node name="OarModel" type="MeshInstance3D" parent="OarRight"]
 transform = Transform3D(-2.84124e-06, 63.122, 0, -65, -2.75915e-06, 0, 0, 0, 37.678, 0.2, 0, 0)
@@ -743,7 +742,7 @@ mesh = SubResource("ArrayMesh_p37jw")
 skeleton = NodePath("")
 
 [node name="OarLeft" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, -0.659193, -0.08, -0.0897961)
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, -0.659, 0, -0.09)
 
 [node name="OarModel" type="MeshInstance3D" parent="OarLeft"]
 transform = Transform3D(2.84124e-06, 63.122, 0, 65, -2.75915e-06, 0, 0, 0, 37.678, 0.2, 0, 0)

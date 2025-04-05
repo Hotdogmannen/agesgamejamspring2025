@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8iu1lsx4psdc"]
+[gd_scene load_steps=8 format=3 uid="uid://b8iu1lsx4psdc"]
 
 [ext_resource type="Script" uid="uid://c0s3fwglvip3h" path="res://Scripts/LevelEnededScreen.cs" id="1_f0gwn"]
 [ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="4_piaga"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://k8omasyf8vt3" path="res://UI/Icons/MenuIcon.svg" id="7_mx0x8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0ng5"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_15pn5"]
 font_size = 26
 
 [node name="TimesUpScreen" type="Control" node_paths=PackedStringArray("bestTimeLabel")]
@@ -111,6 +114,24 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"
 label_settings = ExtResource("6_rixsh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeningfulText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -14.0
+offset_right = 250.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The next ghost ship will not be you!"
+label_settings = SubResource("LabelSettings_15pn5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
