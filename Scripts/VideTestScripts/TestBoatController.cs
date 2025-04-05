@@ -7,7 +7,10 @@ public partial class TestBoatController : RigidBody3D
     [Export] public float ForwardForce {get; set;}
     [Export] public float RotationForce {get; set;}
     [Export] public float oarSpeed {get; set;}
-    [ExportCategory("General")]
+    [ExportCategory("Animation")]
+    [Export] public float BobbingSpeed {get; set;}
+    [Export] public float BobbingVelocitySpeedupPercentage {get; set;}
+    [Export] public float BobbingMagnitude {get; set;}
     [Export] public float OarAnimationHeight {get; set;}
     [Export] public float OarAnimationWidth {get; set;}
     [Export] public float OarAnimationSharpness {get; set;}
@@ -20,11 +23,18 @@ public partial class TestBoatController : RigidBody3D
     [Export] public float CameraPositionSharpness {get; set;}
     [Export] public float CameraRotationSharpness {get; set;}
 
+    double animationTime;
     float leftOarPower;
     float rightOarPower;
     Node3D cameraNode;
     Node3D oarLeft;
     Node3D oarRight;
+
+    GpuParticles3D backParticles;
+    GpuParticles3D frontParticles;
+    GpuParticles3D oarLeftParticles;
+    GpuParticles3D oarRightParticles;
+    Node3D graphicRoot;
     Camera3D camera;
 
     const float margin = 0.1f;
@@ -34,8 +44,14 @@ public partial class TestBoatController : RigidBody3D
         base._Ready();
         cameraNode = GetNode<Node3D>("CameraController");
         camera= GetNode<Camera3D>("CameraController/CameraRig/Camera3D");
+        graphicRoot = GetNode<Node3D>("GraphicRoot");
         oarLeft = GetNode<Node3D>("GraphicRoot/OarLeft");
         oarRight = GetNode<Node3D>("GraphicRoot/OarRight");
+
+        backParticles = GetNode<GpuParticles3D>("SplashParticlesBack");
+        frontParticles = GetNode<GpuParticles3D>("SplashParticlesFront");
+        oarLeftParticles = oarLeft.GetNode<GpuParticles3D>("SplashParticles");
+        oarRightParticles = oarRight.GetNode<GpuParticles3D>("SplashParticles");
     }
 
     public override void _Process(double delta)
@@ -43,8 +59,13 @@ public partial class TestBoatController : RigidBody3D
         base._Process(delta);
         bool rowingLeft = Input.IsActionPressed("move_left");
         bool rowingRight = Input.IsActionPressed("move_right");
+        bool rowingBack = Input.IsActionPressed("move_backward");
         
         //ApplyForce(Vector3.Right*inputAxis);
+
+        if(rowingBack){
+            ApplyForce(Transform.Basis.Z*(ForwardForce/4f*(float)delta));
+        }
 
         if(rowingLeft){
             leftOarPower += (float)delta * oarSpeed;
@@ -62,17 +83,26 @@ public partial class TestBoatController : RigidBody3D
 
         if(rowingRight && rightOarPower > 0.5f && rightOarPower <= 1f){
             ApplyOarPower(delta,1);
+            if(rightOarPower > 0.7f)oarRightParticles.Emitting = true;
         }
+        else oarRightParticles.Emitting = false;
         if(rowingLeft && leftOarPower > 0.5f && leftOarPower <= 1f){
             ApplyOarPower(delta,-1);
+            if(leftOarPower > 0.7f) oarLeftParticles.Emitting = true;
+            
         }
+        else oarLeftParticles.Emitting = false;
 
         float velocityWeight = Fade(Math.Clamp(LinearVelocity.Length()/maxSpeedFOV,0f,1f));
         
         float targetFov = Mathf.Lerp(minFOV,maxFOV,velocityWeight);
         camera.Fov = Mathf.Lerp(camera.Fov,targetFov,(float)delta * fovSharpness);
 
+        frontParticles.AmountRatio = velocityWeight > 0.7f ? velocityWeight : 0f;
+        backParticles.AmountRatio = velocityWeight/2f;
+
         UpdateOarAnimation(delta);
+        ApplyBobbingAnimation(delta);
     }
 
     private void ApplyOarPower(double delta, float dir){
@@ -99,13 +129,25 @@ public partial class TestBoatController : RigidBody3D
 
     private void SetOarRotation(double delta,Node3D oar, float power,bool flipped = false){
         var target = new Vector3(
-            0f,
+            0.1f,
             (float)((flipped? -1 : 1)*Math.Cos(power*2*Math.PI) * OarAnimationWidth),
             (float)((flipped? 1 : -1)*Math.Sin(power*2*Math.PI) * OarAnimationHeight));
 
         float weight = 1f - Mathf.Exp(-OarAnimationSharpness * (float)delta);
         oar.RotationDegrees = oar.RotationDegrees.Lerp(target,weight);
 
+    }
+
+    private void ApplyBobbingAnimation(double delta){
+        
+        float velocityWeight = Fade(Math.Clamp(LinearVelocity.Length()/maxSpeedFOV,0f,1f)*BobbingVelocitySpeedupPercentage+1);
+        animationTime += delta * velocityWeight;
+
+        var target = new Vector3(
+            (float)Math.Cos(animationTime*BobbingSpeed) * BobbingMagnitude,
+            0f,
+            (float)Math.Sin(animationTime*BobbingSpeed+0.2f) * BobbingMagnitude);
+        graphicRoot.RotationDegrees = target;
     }
 
     public override void _PhysicsProcess(double delta)
