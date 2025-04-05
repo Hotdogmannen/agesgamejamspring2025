@@ -3,7 +3,16 @@ using Godot;
 public partial class GameManager : Node3D
 {	
 	[Signal] public delegate void OnCountDownFinishedEventHandler();
-	[Signal] public delegate void OnLevelFinishedEventHandler();
+	/// <summary>
+	/// type == 0: Won,
+	/// type == 1: Lose,
+	/// type == 2: TimesUp
+	/// </summary>
+	[Signal] public delegate void OnLevelEndedEventHandler(int type, float time);
+
+	[ExportCategory("Screens")]
+	[Export] private PackedScene _winScreen { get; set; }
+	[Export] private PackedScene _timesUpScreen { get; set; }
 
 	[ExportCategory("Countdown")]
 	[Export] private float _countDownTime = 5.0f;
@@ -75,9 +84,21 @@ public partial class GameManager : Node3D
 		_levelTimer.Start();
 	}
 
+	public void OnPlayerEnterGoal()
+	{
+		_levelTimer.Stop();
+		EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
+		LevelEnededScreen screen =_winScreen.Instantiate<LevelEnededScreen>();
+		screen.Init(SaveAndLoad.HasBetterTime((float)_levelTimer.TimeLeft));
+		GetTree().Root.AddChild(screen);
+	}
+
 	public void OnTimerFinished()
 	{
 		_levelTimer.Stop();
-		EmitSignal(SignalName.OnLevelFinished);
+		EmitSignal(SignalName.OnLevelEnded, 2, (float)_levelTimer.TimeLeft);
+		LevelEnededScreen screen =_timesUpScreen.Instantiate<LevelEnededScreen>();
+		screen.Init(false);
+		GetTree().Root.AddChild(screen);
 	}
 }

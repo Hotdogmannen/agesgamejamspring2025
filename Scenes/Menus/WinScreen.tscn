@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://dstc4cp6crufh"]
+
+[ext_resource type="Script" uid="uid://c0s3fwglvip3h" path="res://Scripts/LevelEnededScreen.cs" id="1_lqnso"]
+[ext_resource type="Texture2D" uid="uid://dmoyd88ml4btu" path="res://UI/Icons/ReplayIcon.svg" id="1_n12m5"]
+[ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="2_bcim4"]
+[ext_resource type="PackedScene" uid="uid://dh2p6lk4o6j88" path="res://Scenes/ViktorsScene.tscn" id="2_sdatk"]
+[ext_resource type="Texture2D" uid="uid://k8omasyf8vt3" path="res://UI/Icons/MenuIcon.svg" id="3_mf3lo"]
+[ext_resource type="PackedScene" uid="uid://da43e2bkye1vy" path="res://Scenes/Menus/MainMenu.tscn" id="3_sdatk"]
+[ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="3_xos4w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0ng5"]
+font_size = 26
+
+[node name="WinScreen" type="Control" node_paths=PackedStringArray("bestTimeLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqnso")
+gameScene = ExtResource("2_sdatk")
+menuScene = ExtResource("3_sdatk")
+bestTimeLabel = NodePath("ColorRect/BestTimeLabel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.355328, 0.624163, 0.751469, 0.192157)
+
+[node name="ScreenTitle" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -287.0
+offset_right = 287.0
+offset_bottom = 212.0
+grow_horizontal = 2
+text = "You Win"
+label_settings = ExtResource("3_xos4w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestTimeLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -83.0
+offset_right = 250.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Best Time: idk"
+label_settings = SubResource("LabelSettings_f0ng5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -295.0
+offset_right = 144.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="ColorRect/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "
+"
+icon = ExtResource("1_n12m5")
+expand_icon = true
+
+[node name="Label" type="Label" parent="ColorRect/Buttons/RestartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+label_settings = ExtResource("2_bcim4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="ColorRect/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+icon = ExtResource("3_mf3lo")
+expand_icon = true
+
+[node name="Label" type="Label" parent="ColorRect/Buttons/MainMenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+label_settings = ExtResource("2_bcim4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ColorRect/Buttons/RestartButton" to="." method="OnRestart"]
+[connection signal="pressed" from="ColorRect/Buttons/MainMenuButton" to="." method="OnMainMenu"]

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public partial class SaveAndLoad : Node
 {
-	public const string SAVE_FILE_PATH = "user://savegame.save";
+	public const string POSITION_SAVE_FILE_PATH = "user://positions.save";
+	public const string TIME_SAVE_FILE_PATH = "user://time.save";
 
 	[Export] private Node3D _target { get; set; }
 	[Export] private float _timeBetweenSaves { get; set; } = 1.0f;
@@ -48,37 +49,85 @@ public partial class SaveAndLoad : Node
 			_timer += (float)delta;
 	}
 
+	public void OnLevelEnded(int type, float timeleft)
+	{
+		_isSaving = false;
+		
+		//Type == 0 == Win, Only save data if it was better then the last
+		if(type == 0)
+		{
+			SaveData();
+			SaveTime(timeleft);
+		}
+
+		ClearData();
+	}
+
 	public void SaveData()
 	{
 		if(!_ShouldSave)
 			return;
-			
+
 		if(_target == null)
 		{
 			GD.PrintErr("No target assigned!");
 			return;
 		}
 
-		using FileAccess file = FileAccess.Open(SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
+		using FileAccess positionsFile = FileAccess.Open(POSITION_SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
 		
 		foreach (Vector3 pos in _playerPositions)
 		{
 			string savedPos = Json.Stringify(pos);
-			file.StoreLine(savedPos);
+			positionsFile.StoreLine(savedPos);
 		}
 
-		file.Close();
+		positionsFile.Close();
 	}
 	
+	public void SaveTime(float time)
+	{
+		if(HasBetterTime(time))
+		{
+			using FileAccess timeFile = FileAccess.Open(POSITION_SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
+			timeFile.StoreLine(Json.Stringify(time));
+
+			timeFile.Close();
+		}
+	}
+
+	public static bool HasBetterTime(float time)
+	{
+		if (!FileAccess.FileExists(TIME_SAVE_FILE_PATH))
+    	{
+			GD.PrintErr("Save file not found at: " + TIME_SAVE_FILE_PATH);
+        	return false;
+    	}
+		
+		using FileAccess file = FileAccess.Open(TIME_SAVE_FILE_PATH, FileAccess.ModeFlags.Read);
+
+        Json json = new Json();
+        Error parseResult = json.Parse(file.GetLine());
+        if (parseResult != Error.Ok)
+        {
+            GD.PrintErr($"JSON Parse Error: {json.GetErrorMessage()} in {file.GetLine()} at line {json.GetErrorLine()}");
+            return false;
+        }
+
+		float bestTime = (float)json.Data;
+
+		return time < bestTime;
+	}
+
 	public List<Vector3> LoadData()
 	{
-		if (!FileAccess.FileExists(SAVE_FILE_PATH))
+		if (!FileAccess.FileExists(POSITION_SAVE_FILE_PATH))
     	{
-			GD.PrintErr("Save file not found at: " + SAVE_FILE_PATH);
+			GD.PrintErr("Save file not found at: " + POSITION_SAVE_FILE_PATH);
         	return null;
     	}
 		
-		using FileAccess file = FileAccess.Open(SAVE_FILE_PATH, FileAccess.ModeFlags.Read);
+		using FileAccess file = FileAccess.Open(POSITION_SAVE_FILE_PATH, FileAccess.ModeFlags.Read);
 
 		List<Vector3> positions = new();
 

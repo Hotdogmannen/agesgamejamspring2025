@@ -13,6 +13,9 @@ public partial class GhostShip : Node3D
 
     public void Init(List<Vector3> positions, float timeBetweenSaves)
 	{
+		if(positions == null)
+			return;
+
 		_playerPositions = positions;
 		_timeBetweenSaves = timeBetweenSaves;
 
@@ -21,6 +24,8 @@ public partial class GhostShip : Node3D
 
 	public void StartGhost()
 	{
+		if(_playerPositions == null)
+			return;
 		_canMove = true;
 	}
 

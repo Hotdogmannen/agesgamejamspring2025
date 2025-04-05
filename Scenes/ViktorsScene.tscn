@@ -31,4 +31,4 @@ _ghostShip = NodePath("../GhostShip")
 
 [connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
 [connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]
-[connection signal="OnLevelFinished" from="GameManager" to="SaveAndLoad" method="StopSaving"]
+[connection signal="OnLevelEnded" from="GameManager" to="SaveAndLoad" method="OnLevelEnded"]
