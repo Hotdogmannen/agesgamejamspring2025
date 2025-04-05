@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0ome0na4fvjv"]
 
-[ext_resource type="Script" uid="uid://t0nd3lgehw7k" path="res://Scenes/Test stuff/GhostShip.cs" id="1_qy465"]
+[ext_resource type="Script" uid="uid://t0nd3lgehw7k" path="res://Scripts/GhostShip.cs" id="1_qy465"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mhs7k"]
 
