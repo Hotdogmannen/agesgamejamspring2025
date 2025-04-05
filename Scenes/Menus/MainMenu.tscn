@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://da43e2bkye1vy"]
+[gd_scene load_steps=8 format=3 uid="uid://da43e2bkye1vy"]
 
 [ext_resource type="Script" uid="uid://dug5vueortrpv" path="res://Scripts/MainMenu.cs" id="1_uv623"]
 [ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="2_mc63j"]
-[ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="4_ts2fx"]
+[ext_resource type="Texture2D" uid="uid://ctvnbagxenb04" path="res://Logo.png" id="3_mc63j"]
+[ext_resource type="Theme" uid="uid://bn6ojty7wnh4y" path="res://UI/ButtonTheme.tres" id="4_q15nq"]
 [ext_resource type="Texture2D" uid="uid://bdlhr5py25n36" path="res://UI/Icons/PlayIcon.svg" id="5_q15nq"]
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="6_mb40c"]
 [ext_resource type="Texture2D" uid="uid://ctyp4vcywgbsr" path="res://UI/Icons/QuitIcon.svg" id="7_pbd8g"]
@@ -25,19 +26,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_mc63j")
 
-[node name="ScreenTitle" type="Label" parent="."]
+[node name="ScreenTitle" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -287.0
-offset_right = 287.0
-offset_bottom = 212.0
+offset_left = -552.0
+offset_top = 47.0
+offset_right = -47.0
+offset_bottom = 480.0
 grow_horizontal = 2
-text = "Title"
-label_settings = ExtResource("4_ts2fx")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_mc63j")
+expand_mode = 1
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -58,6 +58,7 @@ alignment = 1
 [node name="PlayButton" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = ExtResource("4_q15nq")
 text = "
 "
 icon = ExtResource("5_q15nq")
@@ -78,6 +79,7 @@ vertical_alignment = 1
 [node name="QuitButton" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = ExtResource("4_q15nq")
 icon = ExtResource("7_pbd8g")
 expand_icon = true
 
