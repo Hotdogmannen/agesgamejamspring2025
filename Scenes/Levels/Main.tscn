@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwm4ixrcj6cql"]
+[gd_scene load_steps=20 format=3 uid="uid://dwm4ixrcj6cql"]
 
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="1_a113d"]
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_d31q8"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://drvp4poe30tp" path="res://Scenes/VideTestStuff/ambient_player.tscn" id="6_oi5um"]
 [ext_resource type="Script" uid="uid://scr6sbhn46fh" path="res://Scenes/Levels/PathInstantiate.cs" id="7_saai4"]
 [ext_resource type="PackedScene" uid="uid://gg8bik5u4fhx" path="res://Scenes/VideTestStuff/buoy.tscn" id="8_nl3m6"]
+[ext_resource type="PackedScene" uid="uid://dirtldeda78ec" path="res://Scenes/ModelScenes/rock_1.tscn" id="9_4ih0k"]
+[ext_resource type="PackedScene" uid="uid://bjevhumcu1iol" path="res://Scenes/ModelScenes/rock_2.tscn" id="10_mv52a"]
+[ext_resource type="PackedScene" uid="uid://cbbbloecfxwim" path="res://Scenes/ModelScenes/rock_3.tscn" id="11_otbr7"]
+[ext_resource type="PackedScene" path="res://Scenes/Goal.tscn" id="12_mv52a"]
+[ext_resource type="PackedScene" uid="uid://hwf2tjye6ymm" path="res://Scenes/VideTestStuff/booster_pad.tscn" id="13_otbr7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_07780"]
 
@@ -29,10 +34,19 @@ reflected_light_source = 2
 closed = true
 bake_interval = 30.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.88899, 0, -8.59044, 0, 0, 0, 0, 0, 0, -9.32476, 0, 6.93791, 0, 0, 0, 0, 0, 0, -9.535, 0, 19.058, 0, 0, 0, 0, 0, 0, -18.3212, 0, 35.1174, 0, 0, 0, 0, 0, 0, -27.5059, 0, 36.8038, 0, 0, 0, 0, 0, 0, -35.364, 0, 20.8396, 0, 0, 0, 0, 0, 0, -76.3369, 0, 32.0522, 0, 0, 0, 0, 0, 0, -86.273, 0, 15.932, 0, 0, 0, 0, 0, 0, -77.6988, 0, 0.281095, 0, 0, 0, 0, 0, 0, -63.7395, 0, -5.26821, 0, 0, 0, 0, 0, 0, -44.7453, 0, -7.91977, 0, 0, 0, 0, 0, 0, -29.9399, 0, -12.5825, 0, 0, 0, 0, 0, 0, -31.659, 0, -46.955, 0, 0, 0, 0, 0, 0, -33.2395, 0, -62.2955, 0, 0, 0, 0, 0, 0, -39.4585, 0, -66.376, 0, 0, 0, 0, 0, 0, -46.2825, 0, -63.4846, 0, 0, 0, 0, 0, 0, -46.899, 0, -46.827, 0, 0, 0, 0, 0, 0, -45.6652, -3.8147e-06, -25.7761, 0, 0, 0, 0, 0, 0, -50.999, 0, -20.261, 0, 0, 0, 0, 0, 0, -81.9264, 0, -9.96897, 0, 0, 0, 0, 0, 0, -97.9399, 0, 7.98305, 0, 0, 0, 0, 0, 0, -108.847, 0, 14.771, 0, 0, 0, 0, 0, 0, -116.314, 0, 25.564, 0, 0, 0, 0, 0, 0, -81.6002, -1.90735e-06, 55.4361, 0, 0, 0, 0, 0, 0, -55.4698, 0, 50.6562, 0, 0, 0, 0, 0, 0, -49.0269, 0, 39.1662, 0, 0, 0, 0, 0, 0, -30.025, 0, 64.263, 0, 0, 0, 0, 0, 0, -16.5221, 0, 57.1929, 0, 0, 0, 0, 0, 0, -4.509, 0, 44.639, 0, 0, 0, 0, 0, 0, 8.12559, 0, 21.0719, 0, 0, 0, 0, 0, 0, 10.9533, 0, -8.19997, 0, 0, 0, 0, 0, 0, -0.304117, 0, -16.0366),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.88899, 0, -8.59044, 0, 0, 0, 0, 0, 0, -9.32476, 0, 6.93791, 0, 0, 0, 0, 0, 0, -9.535, 0, 19.058, 0, 0, 0, 0, 0, 0, -18.3212, 0, 35.1174, 0, 0, 0, 0, 0, 0, -27.5059, 0, 36.8038, 0, 0, 0, 0, 0, 0, -49.9872, 0, 27.2371, 0, 0, 0, 0, 0, 0, -73.6994, 0, 39.9739, 0, 0, 0, 0, 0, 0, -86.273, 0, 15.932, 0, 0, 0, 0, 0, 0, -77.6988, 0, 0.281095, 0, 0, 0, 0, 0, 0, -63.7395, 0, -5.26821, 0, 0, 0, 0, 0, 0, -44.7453, 0, -7.91977, 0, 0, 0, 0, 0, 0, -29.9399, 0, -12.5825, 0, 0, 0, 0, 0, 0, -31.659, 0, -46.955, 0, 0, 0, 0, 0, 0, -33.2395, 0, -62.2955, 0, 0, 0, 0, 0, 0, -39.4585, 0, -66.376, 0, 0, 0, 0, 0, 0, -46.268, 0, -62.169, 0, 0, 0, 0, 0, 0, -46.899, 0, -46.827, 0, 0, 0, 0, 0, 0, -45.6652, -3.8147e-06, -25.7761, 0, 0, 0, 0, 0, 0, -50.999, 0, -20.261, 0, 0, 0, 0, 0, 0, -81.9264, 0, -9.96897, 0, 0, 0, 0, 0, 0, -97.9399, 0, 7.98305, 0, 0, 0, 0, 0, 0, -108.847, 0, 14.771, 0, 0, 0, 0, 0, 0, -116.314, 0, 25.564, 0, 0, 0, 0, 0, 0, -107.008, -9.53674e-07, 48.5245, 0, 0, 0, 0, 0, 0, -83.0761, -1.90735e-06, 58.4007, 0, 0, 0, 0, 0, 0, -55.4698, 0, 50.6562, 0, 0, 0, 0, 0, 0, -48.9725, 0, 36.9689, 0, 0, 0, 0, 0, 0, -30.025, 0, 64.263, 0, 0, 0, 0, 0, 0, -11.9529, 0, 58.1837, 0, 0, 0, 0, 0, 0, -4.509, 0, 44.639, 0, 0, 0, 0, 0, 0, 8.12559, 0, 21.0719, 0, 0, 0, 0, 0, 0, 10.9533, 0, -8.19997, 0, 0, 0, 0, 0, 0, -0.304117, 0, -16.0366),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 32
+point_count = 33
+
+[sub_resource type="Curve3D" id="Curve3D_5wxa7"]
+closed = true
+bake_interval = 30.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -95.444, 0, 43.096, 0, 0, 0, 0, 0, 0, -100.131, 0, 40.4149, 0, 0, 0, 0, 0, 0, -101.427, 0, 33.1458, 0, 0, 0, 0, 0, 0, -96.0544, 0, 29.1261, 0, 0, 0, 0, 0, 0, -89.1618, 9.53674e-07, 32.7878, 0, 0, 0, 0, 0, 0, -88.771, 0, 39.346, 0, 0, 0, 0, 0, 0, -91.791, 0, 42.969),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
 
 [node name="Root" type="Node3D"]
 
@@ -85,10 +99,65 @@ spawnSpacing = 2.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.234, -0.343, 43.063)
 
 [node name="Buoy3" parent="." instance=ExtResource("8_nl3m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.369, -0.343, 41.923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9528, -0.343, 42.3723)
 
 [node name="Buoy2" parent="." instance=ExtResource("8_nl3m6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.293, -0.343, 53.143)
+
+[node name="Rock1" parent="." instance=ExtResource("9_4ih0k")]
+transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, -22.4565, 0.168369, 31.9212)
+
+[node name="Rock2" parent="." instance=ExtResource("10_mv52a")]
+transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, -20.8618, 0.550638, 25.1982)
+
+[node name="Rock3" parent="." instance=ExtResource("11_otbr7")]
+transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, -29.6747, 0, 28.4507)
+
+[node name="Rock4" parent="." instance=ExtResource("10_mv52a")]
+transform = Transform3D(-60.9608, -167.943, 21.8851, 134.811, -62.1966, -101.772, 102.517, -18.0766, 146.845, -71.082, 0.550638, 28.7502)
+
+[node name="Rock5" parent="." instance=ExtResource("11_otbr7")]
+transform = Transform3D(-58.7242, 74.6178, -31.3631, 0.411385, 39.0228, 92.0709, 80.9401, 53.9389, -23.2228, -64.1851, 0, 23.8882)
+
+[node name="Rock6" parent="." instance=ExtResource("9_4ih0k")]
+transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, -46.0775, 0.168371, 44.6081)
+
+[node name="Rock7" parent="." instance=ExtResource("9_4ih0k")]
+transform = Transform3D(-11.8864, -100.63, -26.6075, 37.7933, -40.0134, 64.4401, -93.7009, -3.37343, 29.3665, -49.787, 0.168369, -30.187)
+
+[node name="Rock8" parent="." instance=ExtResource("10_mv52a")]
+transform = Transform3D(55.7874, -13.1628, 81.9421, 74.8949, -34.5536, -56.5403, 35.7563, 92.9128, -9.4183, -56.4528, 0.550638, -32.0061)
+
+[node name="Rock9" parent="." instance=ExtResource("11_otbr7")]
+transform = Transform3D(99.9709, 2.03101, -1.30749, 0.411385, 39.0228, 92.0709, 2.38019, -92.0494, 39.003, -53.4974, 0, -23.0892)
+
+[node name="Goal" parent="." node_paths=PackedStringArray("_gameManager") instance=ExtResource("12_mv52a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -39.9354, 9.53674e-07, -56.9359)
+_gameManager = NodePath("../GameManager")
+
+[node name="BoosterPad" parent="." instance=ExtResource("13_otbr7")]
+transform = Transform3D(0.570785, 0, -0.821099, 0, 1, 0, 0.821099, 0, 0.570785, -0.561652, 0, 11.3538)
+
+[node name="Rock10" parent="." instance=ExtResource("10_mv52a")]
+transform = Transform3D(-22.2152, -93.4826, 27.7034, 74.8949, -34.5536, -56.5403, 62.4278, 8.18793, 77.6899, -94.5575, 0.550637, 36.6564)
+
+[node name="Path3D2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_5wxa7")
+script = ExtResource("7_saai4")
+SceneToInstatiate = ExtResource("8_nl3m6")
+spawnSpacing = 2.5
+
+[node name="BoosterPad2" parent="." instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.833683, 0, -0.552243, 0, 1, 0, 0.552243, 0, -0.833683, -103.497, 0, 45.4098)
+
+[node name="BoosterPad3" parent="." instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.999087, 0, 0.0427301, 0, 1, 0, -0.0427301, 0, -0.999087, -107.802, 0, 36.9516)
+
+[node name="BoosterPad4" parent="." instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.831886, 0, 0.554946, 0, 1, 0, -0.554946, 0, -0.831886, -106.634, -9.53674e-07, 28.7571)
+
+[node name="BoosterPad5" parent="." instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.777453, 0, 0.62894, 0, 1, 0, -0.62894, 0, -0.777453, -103.451, -9.53674e-07, 23.4333)
 
 [connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
 [connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]
@@ -96,3 +165,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.293, -0.343, 53.143)
 [connection signal="OnLevelEnded" from="GameManager" to="SaveAndLoad" method="OnLevelEnded"]
 [connection signal="OnLevelEnded" from="GameManager" to="TestBoat" method="SetCantMove"]
 [connection signal="OnShipReachedEnd" from="GhostShip" to="GameManager" method="OnShipReachedEnd"]
+
+[editable path="Goal"]
