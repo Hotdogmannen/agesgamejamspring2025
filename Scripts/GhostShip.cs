@@ -72,6 +72,8 @@ public partial class GhostShip : Node3D
 		float lerpTime = (_currentTime - startIndex*_timeBetweenSaves)/_timeBetweenSaves;
 		Vector3 newPos = _playerPositions[startIndex].Lerp(_playerPositions[endIndex], lerpTime);
 
+		LookAt(newPos);
+
 		Position = newPos;
 	}
 
