@@ -10,9 +10,8 @@ public partial class GameManager : Node3D
 	/// </summary>
 	[Signal] public delegate void OnLevelEndedEventHandler(int type, float time);
 
-	[ExportCategory("Screens")]
-	[Export] private PackedScene _winScreen { get; set; }
-	[Export] private PackedScene _timesUpScreen { get; set; }
+	private PackedScene _winScreen { get; set; }
+	private PackedScene _timesUpScreen { get; set; }
 
 	[ExportCategory("Countdown")]
 	[Export] private float _countDownTime = 5.0f;
@@ -27,6 +26,9 @@ public partial class GameManager : Node3D
 
     public override void _Ready()
     {
+		_winScreen = ResourceLoader.Load<PackedScene>("Scenes/Menus/WinScreen.tscn");
+		_timesUpScreen = ResourceLoader.Load<PackedScene>("Scenes/Menus/TimesUpScreen.tscn");
+
 		_levelTimer.WaitTime = _levelTime;
 		_isCountdown = true;
     }

@@ -2,7 +2,12 @@ using Godot;
 
 public partial class MainMenu : Control
 {
-	[Export] private PackedScene _mainScene;
+	private PackedScene _mainScene;
+
+    public override void _Ready()
+    {
+        _mainScene = ResourceLoader.Load<PackedScene>("Scenes/Levels/Main.tscn");
+    }
 
 	public void Play()
 	{
