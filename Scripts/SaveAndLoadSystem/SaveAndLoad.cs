@@ -6,9 +6,9 @@ public partial class SaveAndLoad : Node
 	public const string SAVE_FILE_PATH = "user://savegame.save";
 
 	[Export] private Node3D _target { get; set; }
-	[Export] private Path3D _ghostpathNode { get; set; }
 	[Export] private float _timeBetweenSaves { get; set; } = 1.0f;
 	[Export] private GhostShip _ghostShip { get; set; }
+	[Export] private bool _ShouldSave = true;
 	private List<Vector3> _playerPositions = new List<Vector3>();
 
 	private bool _isSaving = false;
@@ -17,10 +17,7 @@ public partial class SaveAndLoad : Node
 
     public override void _Ready()
     {
-		LoadData();
-
-		_ghostShip.Init(_playerPositions, _timeBetweenSaves);
-		_ghostShip.StartGhost();
+		_ghostShip.Init(LoadData(), _timeBetweenSaves);
     }
 
 	public void StartSaving()
@@ -53,6 +50,9 @@ public partial class SaveAndLoad : Node
 
 	public void SaveData()
 	{
+		if(!_ShouldSave)
+			return;
+			
 		if(_target == null)
 		{
 			GD.PrintErr("No target assigned!");
@@ -70,21 +70,17 @@ public partial class SaveAndLoad : Node
 		file.Close();
 	}
 	
-	public void LoadData()
+	public List<Vector3> LoadData()
 	{
-		if(_ghostpathNode == null)
-		{
-			GD.PrintErr("No ghost path3d node assigned!");
-			return;
-		}
-
 		if (!FileAccess.FileExists(SAVE_FILE_PATH))
     	{
 			GD.PrintErr("Save file not found at: " + SAVE_FILE_PATH);
-        	return;
+        	return null;
     	}
 		
 		using FileAccess file = FileAccess.Open(SAVE_FILE_PATH, FileAccess.ModeFlags.Read);
+
+		List<Vector3> positions = new();
 
 		while (file.GetPosition() < file.GetLength())
 		{
@@ -98,24 +94,10 @@ public partial class SaveAndLoad : Node
         	    continue;
         	}
 			
-			_playerPositions.Add((Vector3)GD.StrToVar("Vector3" + json.Data.AsString()));
-		}
-	}
-
-	public void LoadCurve()
-	{
-		Curve3D curve = new Curve3D();
-		for (int i = 0; i < _playerPositions.Count; i++)
-		{
-			if(i > 0)
-			{
-				curve.AddPoint(_playerPositions[i], _playerPositions[i - 1]);
-			}
-			else
-				curve.AddPoint(_playerPositions[i]);
+			positions.Add((Vector3)GD.StrToVar("Vector3" + json.Data.AsString()));
 		}
 
-		_ghostpathNode.Curve = curve;
+		return positions;
 	}
 
 	public void ClearData()

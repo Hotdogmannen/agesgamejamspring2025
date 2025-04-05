@@ -16,7 +16,7 @@ _levelTimer = NodePath("LevelTimer")
 _levelTimerLabel = NodePath("TimerCanvas/LevelTimer")
 
 [node name="LevelTimer" type="Timer" parent="."]
-wait_time = 11.0
+wait_time = 10.0
 one_shot = true
 
 [node name="TimerCanvas" type="Control" parent="."]
