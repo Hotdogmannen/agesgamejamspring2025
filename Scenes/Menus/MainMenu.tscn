@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://da43e2bkye1vy"]
 
 [ext_resource type="Script" uid="uid://dug5vueortrpv" path="res://Scripts/MainMenu.cs" id="1_uv623"]
-[ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="2_mc63j"]
+[ext_resource type="Texture2D" uid="uid://dqacp7d4ir3uq" path="res://Material/Textures/VattenGameJam_tiling2.0.png" id="3_7as8u"]
 [ext_resource type="Texture2D" uid="uid://ctvnbagxenb04" path="res://Logo.png" id="3_mc63j"]
 [ext_resource type="Theme" uid="uid://bn6ojty7wnh4y" path="res://UI/ButtonTheme.tres" id="4_q15nq"]
 [ext_resource type="Texture2D" uid="uid://bdlhr5py25n36" path="res://UI/Icons/PlayIcon.svg" id="5_q15nq"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pbd8g"]
 shader = ExtResource("8_pbd8g")
-shader_parameter/color = Vector4(0.1, 0.1, 0.1, 1)
+shader_parameter/color = Vector4(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("_autoSelectButton")]
 layout_mode = 3
@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_mc63j")
+texture = ExtResource("3_7as8u")
 
 [node name="ScreenTitle" type="TextureRect" parent="."]
 layout_mode = 1
