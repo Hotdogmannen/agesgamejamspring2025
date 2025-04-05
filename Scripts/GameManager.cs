@@ -3,6 +3,7 @@ using Godot;
 public partial class GameManager : Node3D
 {	
 	[Signal] public delegate void OnCountDownFinishedEventHandler();
+	[Signal] public delegate void OnLevelFinishedEventHandler();
 
 	[ExportCategory("Countdown")]
 	[Export] private float _countDownTime = 5.0f;
@@ -11,11 +12,13 @@ public partial class GameManager : Node3D
 	[ExportCategory("Level timer")]
 	[Export] private Timer _levelTimer;
 	[Export] private Label _levelTimerLabel;
+	[Export] private float _levelTime = 300;
 
 	private bool _isCountdown = false;
 
     public override void _Ready()
     {
+		_levelTimer.WaitTime = _levelTime;
 		_isCountdown = true;
     }
 
@@ -74,6 +77,7 @@ public partial class GameManager : Node3D
 
 	public void OnTimerFinished()
 	{
-
+		_levelTimer.Stop();
+		EmitSignal(SignalName.OnLevelFinished);
 	}
 }
