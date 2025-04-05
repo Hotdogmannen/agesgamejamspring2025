@@ -1,7 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwm4ixrcj6cql"]
+[gd_scene load_steps=8 format=3 uid="uid://dwm4ixrcj6cql"]
 
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="1_a113d"]
+[ext_resource type="PackedScene" uid="uid://b6ymaathtsyge" path="res://Scenes/VideTestStuff/TestBoat.tscn" id="2_vdr06"]
+[ext_resource type="Material" path="res://Material/WaterMaterial.tres" id="3_t355s"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_07780"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t355s"]
+sky_top_color = Color(0.143632, 0.293692, 0.511907, 1)
+sky_horizon_color = Color(0.436871, 0.684571, 0.870305, 1)
+ground_bottom_color = Color(0.435294, 0.686275, 0.870588, 1)
+ground_horizon_color = Color(0.435294, 0.686275, 0.870588, 1)
+
+[sub_resource type="Sky" id="Sky_07780"]
+sky_material = SubResource("ProceduralSkyMaterial_t355s")
+
+[sub_resource type="Environment" id="Environment_d31q8"]
+background_mode = 2
+sky = SubResource("Sky_07780")
 
 [node name="Root" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_a113d")]
+
+[node name="TestBoat" parent="." instance=ExtResource("2_vdr06")]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Water" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(127.448, 0, 0, 0, 1, 0, 0, 0, 127.448, 0, -0.527436, 0)
+material_override = ExtResource("3_t355s")
+mesh = SubResource("PlaneMesh_07780")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.93644, -0.113408, 0.331993, -0.0894637, 0.837832, 0.538548, -0.33923, -0.534019, 0.774433, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d31q8")
