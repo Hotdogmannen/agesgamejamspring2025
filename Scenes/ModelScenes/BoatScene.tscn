@@ -1,9 +1,9 @@
 [gd_scene load_steps=62 format=4 uid="uid://dcrauqakdsqos"]
 
-[ext_resource type="Material" uid="uid://d255bcy51n6n2" path="res://Material/SeatMaterial.tres" id="1_gnclk"]
-[ext_resource type="Material" uid="uid://derohhex6igg4" path="res://Material/BoatMaterial.tres" id="2_8ng2h"]
-[ext_resource type="Material" uid="uid://dcnfs0efoshnk" path="res://Material/OarMaterial.tres" id="3_gmbxc"]
-[ext_resource type="Material" uid="uid://30omoqrbqbo1" path="res://Material/RopeMaterial.tres" id="4_enfdb"]
+[ext_resource type="Material" uid="uid://d255bcy51n6n2" path="res://Material/SeatMaterial.tres" id="1_id4vh"]
+[ext_resource type="Material" uid="uid://derohhex6igg4" path="res://Material/BoatMaterial.tres" id="2_72vhc"]
+[ext_resource type="Material" uid="uid://dcnfs0efoshnk" path="res://Material/OarMaterial.tres" id="3_x4wik"]
+[ext_resource type="Material" uid="uid://30omoqrbqbo1" path="res://Material/RopeMaterial.tres" id="4_bbxmb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ah5s"]
 
@@ -657,25 +657,25 @@ shadow_mesh = SubResource("ArrayMesh_u32k6")
 
 [node name="Backseat" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(24.4845, 1.97025e-12, 5.7485e-07, 2.14051e-06, -2.47915e-05, -6.57551, 0, -138.644, 7.83862e-07, 0.744207, 0.445321, 0)
-material_override = ExtResource("1_gnclk")
+material_override = ExtResource("1_id4vh")
 mesh = SubResource("ArrayMesh_2peok")
 skeleton = NodePath("")
 
 [node name="Boat" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
-material_override = ExtResource("2_8ng2h")
+material_override = ExtResource("2_72vhc")
 mesh = SubResource("ArrayMesh_11cc8")
 skeleton = NodePath("")
 
 [node name="Floor" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100.439, 0, 0, 0, -1.52582e-05, 3.47039, 0, -127.995, -4.13702e-07, -0.224555, 0.0717822, 0)
-material_override = ExtResource("3_gmbxc")
+material_override = ExtResource("3_x4wik")
 mesh = SubResource("ArrayMesh_jvbwe")
 skeleton = NodePath("")
 
 [node name="Frontseat" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(24.4845, 1.97025e-12, 5.7485e-07, 2.14051e-06, -2.47915e-05, -6.57551, 0, -138.644, 7.83862e-07, -0.961513, 0.445321, 0)
-material_override = ExtResource("1_gnclk")
+material_override = ExtResource("1_id4vh")
 mesh = SubResource("ArrayMesh_jp88t")
 skeleton = NodePath("")
 
@@ -683,88 +683,88 @@ skeleton = NodePath("")
 transform = Transform3D(1.2931e-06, 13.6845, 1.44628e-06, 3.23276e-07, -1.63132e-06, 9.70579, 10.8473, -8.15659e-07, 0, -0.229765, 0.940391, -1.64285)
 mesh = SubResource("ArrayMesh_7ymfr")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Oarholder2" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(1.2931e-06, 13.6845, 1.44628e-06, 3.23276e-07, -1.63132e-06, 9.70579, 10.8473, -8.15659e-07, 0, -0.229765, 0.940391, 1.64285)
 mesh = SubResource("ArrayMesh_6lvvr")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 2.58334, 0.66146, -0.916855)
 mesh = SubResource("ArrayMesh_vgsto")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_001" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 1.68994, 0.66146, -2.01858)
 mesh = SubResource("ArrayMesh_38e2m")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_002" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0.0316593, 0.66146, -2.04994)
 mesh = SubResource("ArrayMesh_5f64a")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_003" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -1.83311, 0.66146, -1.79127)
 mesh = SubResource("ArrayMesh_r4sb6")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_004" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -3.19309, 0.66146, -0.71307)
 mesh = SubResource("ArrayMesh_htvv7")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_005" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -3.19309, 0.66146, 0.71307)
 mesh = SubResource("ArrayMesh_o431l")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_006" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -1.83311, 0.66146, 1.79128)
 mesh = SubResource("ArrayMesh_a7ran")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_007" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0.0316591, 0.66146, 2.04994)
 mesh = SubResource("ArrayMesh_n83dh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_008" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 1.68994, 0.66146, 2.01858)
 mesh = SubResource("ArrayMesh_nbt7j")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Plupp_009" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 2.58334, 0.66146, 0.916855)
 mesh = SubResource("ArrayMesh_vx68g")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_gnclk")
+surface_material_override/0 = ExtResource("1_id4vh")
 
 [node name="Rope" type="MeshInstance3D" parent="Boat"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_3mgtc")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_enfdb")
+surface_material_override/0 = ExtResource("4_bbxmb")
 
 [node name="Oar1" type="MeshInstance3D" parent="."]
 transform = Transform3D(8.35723e-06, 0, 81.2769, -140.211, -1.62315e-05, 7.26672e-06, 1.25358e-05, -136.16, 0, -0.229204, 0.974477, -1.64751)
-material_override = ExtResource("3_gmbxc")
+material_override = ExtResource("3_x4wik")
 mesh = SubResource("ArrayMesh_ffh1y")
 skeleton = NodePath("")
 
 [node name="Oar2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.50717e-05, -2.02894e-05, -81.2769, -140.211, 8.11576e-06, -1.21112e-05, 4.17862e-06, 136.16, -9.68896e-06, -0.225699, 0.974477, 1.657)
-material_override = ExtResource("3_gmbxc")
+material_override = ExtResource("3_x4wik")
 mesh = SubResource("ArrayMesh_gi5qs")
 skeleton = NodePath("")
