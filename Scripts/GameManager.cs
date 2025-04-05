@@ -108,14 +108,14 @@ public partial class GameManager : Node3D
 
 		if(_hasGhostShipFinished)
 		{
-			EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
+			EmitSignal(SignalName.OnLevelEnded, 1, (float)_levelTimer.TimeLeft);
 			LevelEnededScreen screen =_loseScreen.Instantiate<LevelEnededScreen>();
 			screen.Init();
 			AddChild(screen);
 		}
 		else
 		{
-			EmitSignal(SignalName.OnLevelEnded, 1, (float)_levelTimer.TimeLeft);
+			EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
 			LevelEnededScreen screen =_winScreen.Instantiate<LevelEnededScreen>();
 			screen.Init();
 			AddChild(screen);
