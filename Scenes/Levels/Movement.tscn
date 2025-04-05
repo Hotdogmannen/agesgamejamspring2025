@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b04ge52y7dukt"]
 
-[ext_resource type="PackedScene" uid="uid://sc7wd5cvu5o8" path="res://Scenes/VideTestStuff/player_boat.tscn" id="1_2u46y"]
+[ext_resource type="PackedScene" uid="uid://cd7g03edhvqjq" path="res://Scenes/VideTestStuff/player_boat.tscn" id="1_2u46y"]
 [ext_resource type="Texture2D" uid="uid://becuildgt84i6" path="res://Material/Textures/Water.jpg" id="2_y0dd2"]
 [ext_resource type="Script" uid="uid://scr6sbhn46fh" path="res://Scenes/Levels/PathInstantiate.cs" id="3_joyr7"]
 [ext_resource type="PackedScene" uid="uid://gg8bik5u4fhx" path="res://Scenes/VideTestStuff/buoy.tscn" id="4_kpenw"]
