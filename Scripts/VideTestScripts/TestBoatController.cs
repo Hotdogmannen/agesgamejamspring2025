@@ -25,7 +25,10 @@ public partial class TestBoatController : RigidBody3D
 
     double animationTime;
     float leftOarPower;
+    private bool hasPlayedEffectLeft;
     float rightOarPower;
+
+    private bool hasPlayedEffectRight;
     Node3D cameraNode;
     Node3D oarLeft;
     Node3D oarRight;
@@ -34,6 +37,8 @@ public partial class TestBoatController : RigidBody3D
     GpuParticles3D frontParticles;
     GpuParticles3D oarLeftParticles;
     GpuParticles3D oarRightParticles;
+    AudioStreamPlayer3D paddleAudioPlayerLeft;
+    AudioStreamPlayer3D paddleAudioPlayerRight;
     Node3D graphicRoot;
     Camera3D camera;
 
@@ -47,6 +52,9 @@ public partial class TestBoatController : RigidBody3D
         graphicRoot = GetNode<Node3D>("GraphicRoot");
         oarLeft = GetNode<Node3D>("GraphicRoot/OarLeft");
         oarRight = GetNode<Node3D>("GraphicRoot/OarRight");
+
+        paddleAudioPlayerLeft = GetNode<AudioStreamPlayer3D>("PaddleAudioStreamLeft");
+        paddleAudioPlayerRight = GetNode<AudioStreamPlayer3D>("PaddleAudioStreamRight");
 
         backParticles = GetNode<GpuParticles3D>("SplashParticlesBack");
         frontParticles = GetNode<GpuParticles3D>("SplashParticlesFront");
@@ -83,15 +91,29 @@ public partial class TestBoatController : RigidBody3D
 
         if(rowingRight && rightOarPower > 0.5f && rightOarPower <= 1f){
             ApplyOarPower(delta,1);
-            if(rightOarPower > 0.7f)oarRightParticles.Emitting = true;
+            if(rightOarPower > 0.7f){
+                oarRightParticles.Emitting = true;
+                if(!hasPlayedEffectRight) paddleAudioPlayerRight.Play();
+                hasPlayedEffectRight = true;
+            }
         }
-        else oarRightParticles.Emitting = false;
+        else {
+            hasPlayedEffectRight = false;
+            oarRightParticles.Emitting = false;
+            }
         if(rowingLeft && leftOarPower > 0.5f && leftOarPower <= 1f){
             ApplyOarPower(delta,-1);
-            if(leftOarPower > 0.7f) oarLeftParticles.Emitting = true;
+            if(leftOarPower > 0.7f) {
+                oarLeftParticles.Emitting = true;
+                if(!hasPlayedEffectLeft) paddleAudioPlayerLeft.Play();
+                hasPlayedEffectLeft = true;
+            }
             
         }
-        else oarLeftParticles.Emitting = false;
+        else {
+            hasPlayedEffectLeft = false;
+            oarLeftParticles.Emitting = false;
+            }
 
         float velocityWeight = Fade(Math.Clamp(LinearVelocity.Length()/maxSpeedFOV,0f,1f));
         

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://b6ymaathtsyge"]
+[gd_scene load_steps=69 format=4 uid="uid://b6ymaathtsyge"]
 
 [ext_resource type="Script" uid="uid://cxft3jrlqxa36" path="res://Scripts/VideTestScripts/TestBoatController.cs" id="1_xkpi8"]
 [ext_resource type="Material" path="res://Material/SeatMaterial.tres" id="2_8hoai"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bnsf3btepveql" path="res://Scenes/VideTestStuff/splash_particles.tscn" id="2_tcm7h"]
 [ext_resource type="Material" path="res://Material/BoatMaterial.tres" id="3_0fg3l"]
 [ext_resource type="Material" path="res://Material/OarMaterial.tres" id="4_yhajs"]
+[ext_resource type="AudioStream" uid="uid://m8h2i4gxru4f" path="res://Audio/paddle0.wav" id="7_yhajs"]
+[ext_resource type="AudioStream" uid="uid://cfrop5xo5l4qm" path="res://Audio/paddle1.wav" id="8_m838r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8hoai"]
 radius = 0.89936
@@ -650,20 +652,27 @@ shader_parameter/color = Vector4(1, 1, 1, 0)
 [sub_resource type="Gradient" id="Gradient_0ecec"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yhajs"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("7_yhajs")
+stream_1/stream = ExtResource("8_m838r")
+
 [node name="TestBoat" type="RigidBody3D"]
 collision_layer = 3
 gravity_scale = 0.0
-linear_damp = 2.0
-angular_damp = 1.0
+linear_damp = 1.0
+angular_damp = 2.0
 script = ExtResource("1_xkpi8")
 ForwardForce = 200.0
 RotationForce = 20.0
 oarSpeed = 1.0
 BobbingSpeed = 1.0
-BobbingMagnitude = 10.0
+BobbingVelocitySpeedupPercentage = 0.75
+BobbingMagnitude = 2.0
 OarAnimationHeight = 20.0
 OarAnimationWidth = 30.0
-OarAnimationSharpness = 1.0
+OarAnimationSharpness = 10.0
 maxSpeedFOV = 3.0
 maxFOV = 80.0
 minFOV = 60.0
@@ -827,3 +836,17 @@ amount_ratio = 0.0
 transform = Transform3D(1, 0, 0, 0, 0.877724, -0.479167, 0, 0.479167, 0.877724, -0.00184619, -0.261378, -1.55661)
 amount = 80
 amount_ratio = 0.0
+
+[node name="PaddleAudioStreamLeft" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_yhajs")
+volume_db = -10.0
+max_db = 6.0
+max_polyphony = 32
+playback_type = 1
+
+[node name="PaddleAudioStreamRight" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_yhajs")
+volume_db = -10.0
+max_db = 6.0
+max_polyphony = 32
+playback_type = 1
