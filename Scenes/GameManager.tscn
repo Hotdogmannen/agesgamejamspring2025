@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://vp1hgaqoi3fq"]
+[gd_scene load_steps=4 format=3 uid="uid://vp1hgaqoi3fq"]
 
 [ext_resource type="Script" uid="uid://bovayeuubnfm3" path="res://Scripts/GameManager.cs" id="1_m2tc1"]
-[ext_resource type="PackedScene" uid="uid://dstc4cp6crufh" path="res://Scenes/Menus/WinScreen.tscn" id="2_7cxpe"]
-[ext_resource type="PackedScene" uid="uid://b8iu1lsx4psdc" path="res://Scenes/Menus/TimesUpScreen.tscn" id="3_b7dir"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bwyv8"]
 font_size = 30
@@ -12,8 +10,6 @@ font_size = 60
 
 [node name="GameManager" type="Node3D" node_paths=PackedStringArray("_countDownLabel", "_levelTimer", "_levelTimerLabel")]
 script = ExtResource("1_m2tc1")
-_winScreen = ExtResource("2_7cxpe")
-_timesUpScreen = ExtResource("3_b7dir")
 _countDownTime = 6.0
 _countDownLabel = NodePath("TimerCanvas/CountDownText")
 _levelTimer = NodePath("LevelTimer")

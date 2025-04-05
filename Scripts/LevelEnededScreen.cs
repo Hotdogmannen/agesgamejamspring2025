@@ -2,10 +2,17 @@ using Godot;
 
 public partial class LevelEnededScreen : Control
 {
-	[Export] private PackedScene gameScene { get; set; }
-	[Export] private PackedScene menuScene { get; set; }
+	[Export] private PackedScene _gameScene { get; set; }
+	[Export] private PackedScene _menuScene { get; set; }
 	[Export] private Label bestTimeLabel { get; set; }
-	
+
+    public override void _Ready()
+    {
+		_gameScene = ResourceLoader.Load<PackedScene>("Scenes/Levels/Main.tscn");
+		_menuScene = ResourceLoader.Load<PackedScene>("Scenes/Menus/MainMenu.tscn");
+    }
+
+
 	public void Init(bool isNewBestTime)
 	{
 		if (!FileAccess.FileExists(SaveAndLoad.TIME_SAVE_FILE_PATH))
@@ -33,11 +40,11 @@ public partial class LevelEnededScreen : Control
 
 	public void OnRestart()
 	{
-		GetTree().ChangeSceneToPacked(gameScene);
+		GetTree().ChangeSceneToPacked(_gameScene);
 	}
 
 	public void OnMainMenu()
 	{
-		GetTree().ChangeSceneToPacked(menuScene);
+		GetTree().ChangeSceneToPacked(_menuScene);
 	}
 }

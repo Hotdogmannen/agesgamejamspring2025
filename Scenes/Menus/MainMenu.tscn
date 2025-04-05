@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://da43e2bkye1vy"]
+[gd_scene load_steps=7 format=3 uid="uid://da43e2bkye1vy"]
 
 [ext_resource type="Script" uid="uid://dug5vueortrpv" path="res://Scripts/MainMenu.cs" id="1_uv623"]
 [ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="2_mc63j"]
-[ext_resource type="PackedScene" uid="uid://dwm4ixrcj6cql" path="res://Scenes/Levels/Main.tscn" id="3_7as8u"]
 [ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="4_ts2fx"]
 [ext_resource type="Texture2D" uid="uid://bdlhr5py25n36" path="res://UI/Icons/PlayIcon.svg" id="5_q15nq"]
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="6_mb40c"]
@@ -16,7 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uv623")
-_mainScene = ExtResource("3_7as8u")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
