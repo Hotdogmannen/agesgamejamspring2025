@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b8iu1lsx4psdc"]
 
 [ext_resource type="Script" uid="uid://c0s3fwglvip3h" path="res://Scripts/LevelEnededScreen.cs" id="1_f0gwn"]
-[ext_resource type="PackedScene" uid="uid://dh2p6lk4o6j88" path="res://Scenes/ViktorsScene.tscn" id="2_lsnr7"]
 [ext_resource type="PackedScene" uid="uid://da43e2bkye1vy" path="res://Scenes/Menus/MainMenu.tscn" id="3_f0gwn"]
+[ext_resource type="PackedScene" uid="uid://dwm4ixrcj6cql" path="res://Scenes/Levels/Main.tscn" id="3_gb0ol"]
 [ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="4_piaga"]
 [ext_resource type="Texture2D" uid="uid://dmoyd88ml4btu" path="res://UI/Icons/ReplayIcon.svg" id="5_rntwc"]
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="6_rixsh"]
@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f0gwn")
-gameScene = ExtResource("2_lsnr7")
+gameScene = ExtResource("3_gb0ol")
 menuScene = ExtResource("3_f0gwn")
 bestTimeLabel = NodePath("ColorRect/BestTimeLabel")
 

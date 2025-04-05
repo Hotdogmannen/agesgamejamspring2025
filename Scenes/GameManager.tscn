@@ -18,6 +18,7 @@ _countDownTime = 6.0
 _countDownLabel = NodePath("TimerCanvas/CountDownText")
 _levelTimer = NodePath("LevelTimer")
 _levelTimerLabel = NodePath("TimerCanvas/LevelTimer")
+_levelTime = 150.0
 
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 10.0

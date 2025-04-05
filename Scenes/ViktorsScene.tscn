@@ -28,7 +28,3 @@ _ghostShip = NodePath("../GhostShip")
 [node name="GameManager" parent="." instance=ExtResource("4_dq1r3")]
 
 [node name="TestBoat" parent="." instance=ExtResource("4_plnyq")]
-
-[connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
-[connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]
-[connection signal="OnLevelEnded" from="GameManager" to="SaveAndLoad" method="OnLevelEnded"]
