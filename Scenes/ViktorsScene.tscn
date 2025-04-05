@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh2p6lk4o6j88"]
 
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_fjetg"]
-[ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/Test stuff/GhostShip.tscn" id="3_r5ndu"]
+[ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/GhostShip.tscn" id="3_r5ndu"]
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="4_dq1r3"]
 [ext_resource type="PackedScene" uid="uid://b6ymaathtsyge" path="res://Scenes/VideTestStuff/TestBoat.tscn" id="4_plnyq"]
 
@@ -24,7 +24,17 @@ _timeBetweenSaves = 0.5
 _ghostShip = NodePath("../GhostShip")
 
 [node name="GhostShip" parent="." instance=ExtResource("3_r5ndu")]
+oarSpeed = 1.0
 
 [node name="GameManager" parent="." instance=ExtResource("4_dq1r3")]
 
 [node name="TestBoat" parent="." instance=ExtResource("4_plnyq")]
+collision_layer = 1
+linear_damp = 2.0
+angular_damp = 1.0
+BobbingSpeed = 0.0
+BobbingVelocitySpeedupPercentage = 0.0
+BobbingMagnitude = 0.0
+OarAnimationSharpness = 1.0
+
+[connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]

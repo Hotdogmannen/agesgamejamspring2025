@@ -18,12 +18,20 @@ sky_material = SubResource("ProceduralSkyMaterial_t355s")
 [sub_resource type="Environment" id="Environment_d31q8"]
 background_mode = 2
 sky = SubResource("Sky_07780")
+reflected_light_source = 2
 
 [node name="Root" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_a113d")]
 
 [node name="TestBoat" parent="." instance=ExtResource("2_vdr06")]
+collision_layer = 1
+linear_damp = 2.0
+angular_damp = 1.0
+BobbingSpeed = 0.0
+BobbingVelocitySpeedupPercentage = 0.0
+BobbingMagnitude = 0.0
+OarAnimationSharpness = 1.0
 
 [node name="Map" type="Node3D" parent="."]
 
