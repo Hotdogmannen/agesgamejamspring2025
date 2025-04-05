@@ -38,6 +38,12 @@ public partial class GameManager : Node3D
 
     public override void _Process(double delta)
     {
+		if(Input.IsKeyPressed(Key.P))
+		{
+			OnTimerFinished();
+			EmitSignal(SignalName.OnLevelEnded, 2, (float)_levelTimer.TimeLeft);
+		}
+
 		CountDown((float)delta);
 
 		UpdateLevelTimer();
@@ -107,7 +113,7 @@ public partial class GameManager : Node3D
 		}
 		else
 		{
-			EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
+			EmitSignal(SignalName.OnLevelEnded, 1, (float)_levelTimer.TimeLeft);
 			LevelEnededScreen screen =_winScreen.Instantiate<LevelEnededScreen>();
 			screen.Init();
 			GetTree().Root.AddChild(screen);
