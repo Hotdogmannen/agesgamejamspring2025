@@ -1,24 +1,45 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6ymaathtsyge"]
+[gd_scene load_steps=11 format=3 uid="uid://b6ymaathtsyge"]
 
 [ext_resource type="Script" uid="uid://cxft3jrlqxa36" path="res://Scripts/VideTestScripts/TestBoatController.cs" id="1_xkpi8"]
 [ext_resource type="Script" uid="uid://ctm7y24pyjmvy" path="res://addons/TrailRenderer/Runtime/GD/trail_renderer.gd" id="2_p1rwh"]
+[ext_resource type="PackedScene" uid="uid://bnsf3btepveql" path="res://Scenes/VideTestStuff/splash_particles.tscn" id="2_tcm7h"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p1rwh"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_tcm7h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tcm7h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xkpi8"]
 
 [sub_resource type="Curve" id="Curve_p1rwh"]
-_data = [Vector2(0, 0), 0.0, 0.234106, 0, 0, Vector2(1, 0.495395), 0.948155, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.547454, 0, 0, Vector2(1, 0.495395), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1rwh"]
+[sub_resource type="Shader" id="Shader_p1rwh"]
+code = "shader_type spatial;
+
+uniform vec4 color;
+
+void fragment() {
+	ALBEDO = color.xyz;
+	ALPHA = 1.0 - UV.y;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1rwh"]
+render_priority = 0
+shader = SubResource("Shader_p1rwh")
+shader_parameter/color = Vector4(1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_0ecec"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
 [node name="TestBoat" type="RigidBody3D"]
+collision_layer = 3
 gravity_scale = 0.0
 linear_damp = 2.0
 angular_damp = 1.0
@@ -26,6 +47,8 @@ script = ExtResource("1_xkpi8")
 ForwardForce = 200.0
 RotationForce = 20.0
 oarSpeed = 1.0
+BobbingSpeed = 1.0
+BobbingMagnitude = 10.0
 OarAnimationHeight = 20.0
 OarAnimationWidth = 30.0
 OarAnimationSharpness = 1.0
@@ -37,7 +60,7 @@ CameraPositionSharpness = 3.0
 CameraRotationSharpness = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_p1rwh")
+shape = SubResource("SphereShape3D_tcm7h")
 
 [node name="CameraController" type="Node3D" parent="."]
 top_level = true
@@ -64,19 +87,38 @@ transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 0.4, 0.75, 0, 0)
 mesh = SubResource("BoxMesh_xkpi8")
 skeleton = NodePath("../../..")
 
+[node name="SplashParticles" parent="GraphicRoot/OarRight" instance=ExtResource("2_tcm7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37645, 0, 0.0655055)
+emitting = false
+amount = 60
+
 [node name="OarLeft" type="Node3D" parent="GraphicRoot"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52686, 0, 0)
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, -0.52686, 0, 0)
 
 [node name="OarModel" type="MeshInstance3D" parent="GraphicRoot/OarLeft"]
 transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 0.4, 0.75, 0, 0)
 mesh = SubResource("BoxMesh_xkpi8")
 skeleton = NodePath("../../..")
 
+[node name="SplashParticles" parent="GraphicRoot/OarLeft" instance=ExtResource("2_tcm7h")]
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 1.45815, 0, 0.0346088)
+emitting = false
+
 [node name="TrailRenderer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.454677, 0.522433)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.291402, 0.261416)
 script = ExtResource("2_p1rwh")
+lifetime = 0.8
 min_vertex_distance = 0.01
 curve = SubResource("Curve_p1rwh")
-material = SubResource("StandardMaterial3D_p1rwh")
+material = SubResource("ShaderMaterial_p1rwh")
 color_gradient = SubResource("Gradient_0ecec")
 metadata/_custom_type_script = "uid://ctm7y24pyjmvy"
+
+[node name="SplashParticlesBack" parent="." instance=ExtResource("2_tcm7h")]
+transform = Transform3D(1, 0, 0, 0, 0.816742, -0.577003, 0, 0.577003, 0.816742, 0, -0.469701, 0.507811)
+amount_ratio = 0.0
+
+[node name="SplashParticlesFront" parent="." instance=ExtResource("2_tcm7h")]
+transform = Transform3D(1, 0, 0, 0, 0.877724, -0.479167, 0, 0.479167, 0.877724, -0.00184619, 0.117404, -0.75389)
+amount = 80
+amount_ratio = 0.0

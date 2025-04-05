@@ -1,31 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://b04ge52y7dukt"]
+[gd_scene load_steps=8 format=3 uid="uid://b04ge52y7dukt"]
 
 [ext_resource type="PackedScene" uid="uid://b6ymaathtsyge" path="res://Scenes/VideTestStuff/TestBoat.tscn" id="1_lopwk"]
-[ext_resource type="Material" uid="uid://cief444xrlec" path="res://Material/WaterMaterial.tres" id="2_joyr7"]
+[ext_resource type="Texture2D" uid="uid://becuildgt84i6" path="res://Water.jpg" id="2_y0dd2"]
+[ext_resource type="Script" uid="uid://scr6sbhn46fh" path="res://Scenes/Levels/PathInstantiate.cs" id="3_joyr7"]
+[ext_resource type="PackedScene" uid="uid://gg8bik5u4fhx" path="res://Scenes/VideTestStuff/buoy.tscn" id="4_kpenw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_joyr7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpenw"]
+albedo_texture = ExtResource("2_y0dd2")
+
+[sub_resource type="Curve3D" id="Curve3D_kpenw"]
+bake_interval = 70.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.353, 0, 2.598, 0, 0, 0, 0, 0, 0, 3.157, 0, 8.563, 0, 0, 0, 0, 0, 0, 4.344, 0, 13.967, 0, 0, 0, 0, 0, 0, 2.025, 0, 20.855, 0, 0, 0, 0, 0, 0, -4.623, 0, 21.824, 0, 0, 0, 0, 0, 0, -7.501, 0, 16.16, 0, 0, 0, 0, 0, 0, -10.644, 0, 10.056, 0, 0, 0, 0, 0, 0, -11.722, 0, 3.831, 0, 0, 0, 0, 0, 0, -9.061, 0, -0.397, 0, 0, 0, 0, 0, 0, -4.468, 0, -2.207),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
 
 [node name="Movement" type="Node3D"]
 
 [node name="TestBoat" parent="." instance=ExtResource("1_lopwk")]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00176442, -0.00459552, 0.00337505)
+collision_layer = 1
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 linear_damp = 1.0
 angular_damp = 2.0
+BobbingVelocitySpeedupPercentage = 0.75
+BobbingMagnitude = 2.0
 OarAnimationSharpness = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, -0.494756, 0)
-material_override = ExtResource("2_joyr7")
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.16715, -0.339408, -0.608094)
 mesh = SubResource("PlaneMesh_joyr7")
-surface_material_override/0 = ExtResource("2_joyr7")
+surface_material_override/0 = SubResource("StandardMaterial3D_kpenw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.959205, -0.187098, 0.211944, -0.214681, 0.0057509, 0.976667, -0.183952, -0.982324, -0.0346501, -1.54277, 4.6058, 0.141887)
-light_color = Color(0.956656, 0.919956, 0.873931, 1)
-light_energy = 0.839
-light_indirect_energy = 3.101
-light_volumetric_fog_energy = 2.293
+shadow_enabled = true
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07354, 0, -6.54538)
+curve = SubResource("Curve3D_kpenw")
+script = ExtResource("3_joyr7")
+SceneToInstatiate = ExtResource("4_kpenw")
+spawnSpacing = 2.5
+
+[connection signal="curve_changed" from="Path3D" to="Path3D" method="OnCurveChanged"]

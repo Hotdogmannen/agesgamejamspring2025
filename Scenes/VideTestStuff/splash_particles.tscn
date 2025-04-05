@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnsf3btepveql"]
+
+[ext_resource type="Material" uid="uid://b60fq4wgkucf7" path="res://testPArticleMaterial.tres" id="1_l8n7x"]
+[ext_resource type="Material" uid="uid://dqay3t5ts23s7" path="res://testParticleProcessMaterial.tres" id="2_62av6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_2p8qt"]
+
+[sub_resource type="Skin" id="Skin_2gfr3"]
+
+[node name="SplashParticles" type="GPUParticles3D"]
+material_override = ExtResource("1_l8n7x")
+amount = 40
+lifetime = 0.5
+randomness = 1.0
+transform_align = 3
+process_material = ExtResource("2_62av6")
+draw_pass_1 = SubResource("QuadMesh_2p8qt")
+draw_skin = SubResource("Skin_2gfr3")
