@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6ymaathtsyge"]
+
+[ext_resource type="Script" uid="uid://cxft3jrlqxa36" path="res://Scripts/VideTestScripts/TestBoatController.cs" id="1_xkpi8"]
+[ext_resource type="Script" uid="uid://ctm7y24pyjmvy" path="res://addons/TrailRenderer/Runtime/GD/trail_renderer.gd" id="2_p1rwh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1rwh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tcm7h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xkpi8"]
+
+[sub_resource type="Curve" id="Curve_p1rwh"]
+_data = [Vector2(0, 0), 0.0, 0.234106, 0, 0, Vector2(1, 0.495395), 0.948155, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1rwh"]
+
+[sub_resource type="Gradient" id="Gradient_0ecec"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[node name="TestBoat" type="RigidBody3D"]
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp = 1.0
+script = ExtResource("1_xkpi8")
+ForwardForce = 200.0
+RotationForce = 20.0
+oarSpeed = 1.0
+OarAnimationHeight = 20.0
+OarAnimationWidth = 30.0
+OarAnimationSharpness = 1.0
+maxSpeedFOV = 3.0
+maxFOV = 80.0
+minFOV = 60.0
+fovSharpness = 1.0
+CameraPositionSharpness = 3.0
+CameraRotationSharpness = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_p1rwh")
+
+[node name="CameraController" type="Node3D" parent="."]
+top_level = true
+
+[node name="CameraRig" type="Node3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.950673, 0.310195, 0, -0.310195, 0.950673, 0, 2.23261, 3.40838)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0102959, 0.563074)
+current = true
+fov = 60.0
+
+[node name="GraphicRoot" type="Node3D" parent="."]
+
+[node name="BoatGraphic" type="MeshInstance3D" parent="GraphicRoot"]
+mesh = SubResource("BoxMesh_tcm7h")
+skeleton = NodePath("../..")
+
+[node name="OarRight" type="Node3D" parent="GraphicRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467794, 0, 0)
+
+[node name="OarModel2" type="MeshInstance3D" parent="GraphicRoot/OarRight"]
+transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 0.4, 0.75, 0, 0)
+mesh = SubResource("BoxMesh_xkpi8")
+skeleton = NodePath("../../..")
+
+[node name="OarLeft" type="Node3D" parent="GraphicRoot"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52686, 0, 0)
+
+[node name="OarModel" type="MeshInstance3D" parent="GraphicRoot/OarLeft"]
+transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 0.4, 0.75, 0, 0)
+mesh = SubResource("BoxMesh_xkpi8")
+skeleton = NodePath("../../..")
+
+[node name="TrailRenderer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.454677, 0.522433)
+script = ExtResource("2_p1rwh")
+min_vertex_distance = 0.01
+curve = SubResource("Curve_p1rwh")
+material = SubResource("StandardMaterial3D_p1rwh")
+color_gradient = SubResource("Gradient_0ecec")
+metadata/_custom_type_script = "uid://ctm7y24pyjmvy"
