@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://b6ymaathtsyge"]
+[gd_scene load_steps=70 format=4 uid="uid://b6ymaathtsyge"]
 
 [ext_resource type="Script" uid="uid://cxft3jrlqxa36" path="res://Scripts/VideTestScripts/TestBoatController.cs" id="1_xkpi8"]
 [ext_resource type="Material" path="res://Material/SeatMaterial.tres" id="2_8hoai"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" path="res://Material/OarMaterial.tres" id="4_yhajs"]
 [ext_resource type="AudioStream" uid="uid://m8h2i4gxru4f" path="res://Audio/paddle0.wav" id="7_yhajs"]
 [ext_resource type="AudioStream" uid="uid://cfrop5xo5l4qm" path="res://Audio/paddle1.wav" id="8_m838r"]
+[ext_resource type="AudioStream" uid="uid://bxv24ajpgr40b" path="res://Audio/wind1.wav" id="9_m838r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8hoai"]
 radius = 0.89936
@@ -839,14 +840,16 @@ amount_ratio = 0.0
 
 [node name="PaddleAudioStreamLeft" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yhajs")
-volume_db = -10.0
 max_db = 6.0
 max_polyphony = 32
 playback_type = 1
 
 [node name="PaddleAudioStreamRight" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yhajs")
-volume_db = -10.0
 max_db = 6.0
 max_polyphony = 32
 playback_type = 1
+
+[node name="WindAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_m838r")
+max_db = 6.0

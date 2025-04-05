@@ -9,6 +9,7 @@ public partial class Buoy : Node3D
 
     private Node3D graphic;
     private GpuParticles3D splashParticles;
+    private AudioStreamPlayer3D audioPlayer;
 
     private float scale;
 
@@ -17,6 +18,7 @@ public partial class Buoy : Node3D
         base._Ready();
         graphic = GetNode<Node3D>("Graphic");
         splashParticles = GetNode<GpuParticles3D>("SplashParticles");
+        audioPlayer = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
         SetScale(1f);
     }
 
@@ -28,6 +30,7 @@ public partial class Buoy : Node3D
             rb.ApplyImpulse(dir.Normalized() * bounceForce);
             SetScale(bounceScale);
             splashParticles.Emitting = true;
+            audioPlayer.Play();
         }
 
     }
