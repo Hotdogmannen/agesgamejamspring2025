@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://da43e2bkye1vy"]
+[gd_scene load_steps=11 format=3 uid="uid://da43e2bkye1vy"]
 
 [ext_resource type="Script" uid="uid://dug5vueortrpv" path="res://Scripts/MainMenu.cs" id="1_uv623"]
 [ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="2_mc63j"]
@@ -8,11 +8,12 @@
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="6_mb40c"]
 [ext_resource type="Texture2D" uid="uid://ctyp4vcywgbsr" path="res://UI/Icons/QuitIcon.svg" id="7_pbd8g"]
 [ext_resource type="Shader" uid="uid://dpwyl5jjdy4w1" path="res://Shaders/ScrollingTexture.gdshader" id="8_pbd8g"]
+[ext_resource type="Texture2D" uid="uid://b48jdpflxac6j" path="res://UI/Gamepad Layout.png" id="9_7as8u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pbd8g"]
 shader = ExtResource("8_pbd8g")
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_autoSelectButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uv623")
+_autoSelectButton = NodePath("Buttons/PlayButton")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -100,6 +102,23 @@ text = "Quit"
 label_settings = ExtResource("6_mb40c")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.524
+anchor_top = 0.244
+anchor_right = 0.892
+anchor_bottom = 0.771
+offset_left = -191.648
+offset_top = -50.112
+offset_right = 170.416
+offset_bottom = 50.392
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_7as8u")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="Play"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="Quit"]

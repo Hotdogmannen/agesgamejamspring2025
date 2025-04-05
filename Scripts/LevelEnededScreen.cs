@@ -2,12 +2,15 @@ using Godot;
 
 public partial class LevelEnededScreen : Control
 {
-	[Export] private PackedScene _gameScene { get; set; }
-	[Export] private PackedScene _menuScene { get; set; }
+	[Export] private Button _autoSelectButton;
+	private PackedScene _gameScene { get; set; }
+	private PackedScene _menuScene { get; set; }
 	[Export] private Label bestTimeLabel { get; set; }
 
     public override void _Ready()
     {
+		_autoSelectButton.GrabFocus();
+
 		_gameScene = ResourceLoader.Load<PackedScene>("Scenes/Levels/Main.tscn");
 		_menuScene = ResourceLoader.Load<PackedScene>("Scenes/Menus/MainMenu.tscn");
     }
