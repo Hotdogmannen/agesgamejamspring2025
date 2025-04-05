@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="1_a113d"]
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_d31q8"]
-[ext_resource type="PackedScene" uid="uid://b6ymaathtsyge" path="res://Scenes/VideTestStuff/TestBoat.tscn" id="2_vdr06"]
 [ext_resource type="Material" uid="uid://ck70jlwfynm0u" path="res://Material/WaterMaterial.tres" id="3_t355s"]
-[ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/GhostShip.tscn" id="4_07780"]
+[ext_resource type="PackedScene" path="res://Scenes/GhostShip.tscn" id="4_07780"]
+[ext_resource type="PackedScene" uid="uid://sc7wd5cvu5o8" path="res://Scenes/VideTestStuff/player_boat.tscn" id="5_d31q8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_07780"]
 
@@ -27,26 +27,25 @@ reflected_light_source = 2
 [node name="GameManager" parent="." instance=ExtResource("1_a113d")]
 
 [node name="SaveAndLoad" type="Node3D" parent="." node_paths=PackedStringArray("_target", "_ghostShip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000412226, 0.00171268, -0.00367451)
 script = ExtResource("2_d31q8")
 _target = NodePath("../TestBoat")
 _timeBetweenSaves = 0.5
 _ghostShip = NodePath("../GhostShip")
 
 [node name="GhostShip" parent="." instance=ExtResource("4_07780")]
-
-[node name="TestBoat" parent="." instance=ExtResource("2_vdr06")]
-collision_layer = 1
-linear_damp = 2.0
-angular_damp = 1.0
+oarSpeed = 0.0
 BobbingSpeed = 0.0
 BobbingVelocitySpeedupPercentage = 0.0
 BobbingMagnitude = 0.0
-OarAnimationSharpness = 1.0
+OarAnimationHeight = 0.0
+OarAnimationWidth = 0.0
+OarAnimationSharpness = 0.0
 
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Water" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(127.448, 0, 0, 0, 1, 0, 0, 0, 127.448, 0, -0.527436, 0)
+transform = Transform3D(127.448, 0, 0, 0, 1, 0, 0, 0, 127.448, 0, -0.391561, 0)
 material_override = ExtResource("3_t355s")
 mesh = SubResource("PlaneMesh_07780")
 skeleton = NodePath("../..")
@@ -56,6 +55,8 @@ transform = Transform3D(0.93644, -0.113408, 0.331993, -0.0894637, 0.837832, 0.53
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d31q8")
+
+[node name="TestBoat" parent="." instance=ExtResource("5_d31q8")]
 
 [connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
 [connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b04ge52y7dukt"]
 
-[ext_resource type="PackedScene" uid="uid://b6ymaathtsyge" path="res://Scenes/VideTestStuff/TestBoat.tscn" id="1_lopwk"]
+[ext_resource type="PackedScene" uid="uid://sc7wd5cvu5o8" path="res://Scenes/VideTestStuff/player_boat.tscn" id="1_2u46y"]
 [ext_resource type="Texture2D" uid="uid://becuildgt84i6" path="res://Material/Textures/Water.jpg" id="2_y0dd2"]
 [ext_resource type="Script" uid="uid://scr6sbhn46fh" path="res://Scenes/Levels/PathInstantiate.cs" id="3_joyr7"]
 [ext_resource type="PackedScene" uid="uid://gg8bik5u4fhx" path="res://Scenes/VideTestStuff/buoy.tscn" id="4_kpenw"]
@@ -21,13 +21,8 @@ point_count = 11
 
 [node name="Movement" type="Node3D"]
 
-[node name="TestBoat" parent="." instance=ExtResource("1_lopwk")]
-physics_interpolation_mode = 1
+[node name="TestBoat" parent="." instance=ExtResource("1_2u46y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00176442, 0.119622, 0.00337505)
-collision_layer = 1
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.16715, -0.339408, -0.608094)

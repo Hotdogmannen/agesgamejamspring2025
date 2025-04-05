@@ -4,6 +4,7 @@ using System;
 public partial class TestBoatController : RigidBody3D
 {
     [ExportCategory("General")]
+    [Export] public bool CanMove {get; set;} = false;
     [Export] public float ForwardForce {get; set;}
     [Export] public float RotationForce {get; set;}
     [Export] public float oarSpeed {get; set;}
@@ -28,7 +29,7 @@ public partial class TestBoatController : RigidBody3D
     private bool hasPlayedEffectLeft;
     float rightOarPower;
 
-    private bool _canMove = false;
+    
     
     private bool hasPlayedEffectRight;
     Node3D cameraNode;
@@ -68,7 +69,7 @@ public partial class TestBoatController : RigidBody3D
 
     public override void _Process(double delta)
     {
-        if(_canMove)
+        if(CanMove)
         {
             
             bool rowingLeft = Input.IsActionPressed("move_left");
@@ -206,6 +207,6 @@ public partial class TestBoatController : RigidBody3D
 
     public static float Fade(float t) => t * t * t * (t * (t * 6 - 15) + 10);    
 
-    public void SetCanMove() => _canMove = true;
-    public void SetCantMove(int type, float time) => _canMove = false;
+    public void SetCanMove() => CanMove = true;
+    public void SetCantMove(int type, float time) => CanMove = false;
 }

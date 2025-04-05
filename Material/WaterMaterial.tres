@@ -6,7 +6,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_kwvru")
-shader_parameter/TilingScale = Vector3(18, 18, 18)
-shader_parameter/WaterSpeed = Vector2(-0.003, -0.003)
+shader_parameter/TilingScale = Vector3(60, 60, 60)
+shader_parameter/WaterSpeed = Vector2(-0.001, -0.001)
 shader_parameter/Texture = ExtResource("2_7sjtv")
 shader_parameter/ColorParameter = Color(0.691019, 0.893652, 0.932261, 1)
