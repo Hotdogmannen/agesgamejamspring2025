@@ -1,11 +1,11 @@
-[gd_scene load_steps=71 format=4 uid="uid://sc7wd5cvu5o8"]
+[gd_scene load_steps=71 format=4 uid="uid://cd7g03edhvqjq"]
 
 [ext_resource type="Script" uid="uid://cxft3jrlqxa36" path="res://Scripts/VideTestScripts/TestBoatController.cs" id="1_d3d6u"]
 [ext_resource type="Material" path="res://Material/SeatMaterial.tres" id="2_wpl1t"]
 [ext_resource type="Material" path="res://Material/BoatMaterial.tres" id="3_jvblm"]
 [ext_resource type="Material" path="res://Material/OarMaterial.tres" id="4_pc3ge"]
 [ext_resource type="Material" path="res://Material/RopeMaterial.tres" id="5_2pt2d"]
-[ext_resource type="PackedScene" uid="uid://bnsf3btepveql" path="res://Scenes/VideTestStuff/splash_particles.tscn" id="6_28its"]
+[ext_resource type="PackedScene" path="res://Scenes/VideTestStuff/splash_particles.tscn" id="6_28its"]
 [ext_resource type="Script" uid="uid://ctm7y24pyjmvy" path="res://addons/TrailRenderer/Runtime/GD/trail_renderer.gd" id="7_03jvk"]
 [ext_resource type="AudioStream" uid="uid://m8h2i4gxru4f" path="res://Audio/paddle0.wav" id="8_1mr22"]
 [ext_resource type="AudioStream" uid="uid://cfrop5xo5l4qm" path="res://Audio/paddle1.wav" id="9_6ftb6"]
@@ -630,7 +630,7 @@ shadow_mesh = SubResource("ArrayMesh_8t82s")
 _data = [Vector2(0, 0), 0.0, 0.547454, 0, 0, Vector2(1, 0.495395), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Shader" id="Shader_p1rwh"]
+[sub_resource type="Shader" id="Shader_d3d6u"]
 code = "shader_type spatial;
 
 uniform vec4 color;
@@ -648,7 +648,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1rwh"]
 render_priority = 0
-shader = SubResource("Shader_p1rwh")
+shader = SubResource("Shader_d3d6u")
 shader_parameter/color = Vector4(1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_0ecec"]
@@ -669,7 +669,6 @@ gravity_scale = 0.0
 linear_damp = 1.0
 angular_damp = 2.0
 script = ExtResource("1_d3d6u")
-CanMove = true
 ForwardForce = 200.0
 RotationForce = 20.0
 oarSpeed = 1.0

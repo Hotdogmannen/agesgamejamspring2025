@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="1_a113d"]
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_d31q8"]
 [ext_resource type="Material" uid="uid://ck70jlwfynm0u" path="res://Material/WaterMaterial.tres" id="3_t355s"]
-[ext_resource type="PackedScene" path="res://Scenes/GhostShip.tscn" id="4_07780"]
-[ext_resource type="PackedScene" uid="uid://sc7wd5cvu5o8" path="res://Scenes/VideTestStuff/player_boat.tscn" id="5_d31q8"]
+[ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/GhostShip.tscn" id="4_07780"]
+[ext_resource type="PackedScene" uid="uid://cd7g03edhvqjq" path="res://Scenes/VideTestStuff/player_boat.tscn" id="5_d31q8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_07780"]
 
@@ -57,6 +57,7 @@ transform = Transform3D(0.93644, -0.113408, 0.331993, -0.0894637, 0.837832, 0.53
 environment = SubResource("Environment_d31q8")
 
 [node name="TestBoat" parent="." instance=ExtResource("5_d31q8")]
+CanMove = false
 
 [connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
 [connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]

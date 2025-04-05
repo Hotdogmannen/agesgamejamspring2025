@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_fjetg"]
 [ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/GhostShip.tscn" id="3_r5ndu"]
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="4_dq1r3"]
-[ext_resource type="PackedScene" uid="uid://b6ymaathtsyge" path="res://Scenes/VideTestStuff/TestBoat.tscn" id="4_plnyq"]
+[ext_resource type="PackedScene" path="res://Scenes/VideTestStuff/TestBoat.tscn" id="4_plnyq"]
 
 [node name="ViktorsScene" type="Node3D"]
 

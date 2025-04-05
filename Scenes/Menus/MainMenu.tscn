@@ -12,6 +12,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pbd8g"]
 shader = ExtResource("8_pbd8g")
+shader_parameter/color = Vector4(0.1, 0.1, 0.1, 1)
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("_autoSelectButton")]
 layout_mode = 3

@@ -1,10 +1,11 @@
-[gd_scene load_steps=59 format=4 uid="uid://c0ome0na4fvjv"]
+[gd_scene load_steps=64 format=4 uid="uid://c0ome0na4fvjv"]
 
 [ext_resource type="Script" uid="uid://t0nd3lgehw7k" path="res://Scripts/GhostShip.cs" id="1_qy465"]
 [ext_resource type="Material" uid="uid://hsnanb220fnp" path="res://Material/GhostBoat/GhostSeatMaterial.tres" id="2_aykx6"]
 [ext_resource type="Material" uid="uid://cwolubjrpks4r" path="res://Material/GhostBoat/GhostBoatMaterial.tres" id="3_xlx71"]
 [ext_resource type="Material" uid="uid://yjckhfnx38i2" path="res://Material/GhostBoat/GhostRopeMaterial.tres" id="5_u4847"]
 [ext_resource type="Material" uid="uid://co3wriwu6w8wf" path="res://Material/GhostBoat/GhostOarMaterial.tres" id="6_2j6j1"]
+[ext_resource type="Script" uid="uid://ctm7y24pyjmvy" path="res://addons/TrailRenderer/Runtime/GD/trail_renderer.gd" id="6_aykx6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ah5s"]
 
@@ -615,6 +616,34 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8t82s")
 
+[sub_resource type="Curve" id="Curve_xlx71"]
+_data = [Vector2(0, 0), 0.0, 0.547454, 0, 0, Vector2(1, 0.495395), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Shader" id="Shader_p1rwh"]
+code = "shader_type spatial;
+
+uniform vec4 color;
+
+void fragment() {
+	ALBEDO = color.xyz;
+	ALPHA = 1.0 - UV.y;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4847"]
+render_priority = 0
+shader = SubResource("Shader_p1rwh")
+shader_parameter/color = Vector4(1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_2j6j1"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
 [node name="GhostShip" type="Node3D" node_paths=PackedStringArray("oarLeft", "oarRight")]
 script = ExtResource("1_qy465")
 oarSpeed = 10.0
@@ -749,3 +778,13 @@ transform = Transform3D(2.84124e-06, 63.122, 0, 65, -2.75915e-06, 0, 0, 0, 37.67
 material_override = ExtResource("6_2j6j1")
 mesh = SubResource("ArrayMesh_p37jw")
 skeleton = NodePath("")
+
+[node name="TrailRenderer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.391, 0.645)
+script = ExtResource("6_aykx6")
+lifetime = 0.8
+min_vertex_distance = 0.01
+curve = SubResource("Curve_xlx71")
+material = SubResource("ShaderMaterial_u4847")
+color_gradient = SubResource("Gradient_2j6j1")
+metadata/_custom_type_script = "uid://ctm7y24pyjmvy"

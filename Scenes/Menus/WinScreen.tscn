@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dstc4cp6crufh"]
+[gd_scene load_steps=11 format=3 uid="uid://dstc4cp6crufh"]
 
 [ext_resource type="Script" uid="uid://c0s3fwglvip3h" path="res://Scripts/LevelEnededScreen.cs" id="1_lqnso"]
 [ext_resource type="Texture2D" uid="uid://dmoyd88ml4btu" path="res://UI/Icons/ReplayIcon.svg" id="1_n12m5"]
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="2_bcim4"]
+[ext_resource type="Shader" uid="uid://dpwyl5jjdy4w1" path="res://Shaders/ScrollingTexture.gdshader" id="2_sdatk"]
+[ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="3_f0ng5"]
 [ext_resource type="Texture2D" uid="uid://k8omasyf8vt3" path="res://UI/Icons/MenuIcon.svg" id="3_mf3lo"]
 [ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="3_xos4w"]
+[ext_resource type="Theme" uid="uid://bn6ojty7wnh4y" path="res://UI/ButtonTheme.tres" id="5_xos4w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1emm1"]
+shader = ExtResource("2_sdatk")
+shader_parameter/color = Vector4(0, 0.4, 0, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0ng5"]
 font_size = 26
@@ -20,14 +27,26 @@ script = ExtResource("1_lqnso")
 _autoSelectButton = NodePath("ColorRect/Buttons/RestartButton")
 bestTimeLabel = NodePath("ColorRect/BestTimeLabel")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1emm1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -188.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f0ng5")
+
+[node name="ColorRect" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.355328, 0.624163, 0.751469, 0.192157)
 
 [node name="ScreenTitle" type="Label" parent="ColorRect"]
 layout_mode = 1
@@ -98,6 +117,7 @@ alignment = 1
 [node name="RestartButton" type="Button" parent="ColorRect/Buttons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = ExtResource("5_xos4w")
 text = "
 "
 icon = ExtResource("1_n12m5")
@@ -118,6 +138,7 @@ vertical_alignment = 1
 [node name="MainMenuButton" type="Button" parent="ColorRect/Buttons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = ExtResource("5_xos4w")
 icon = ExtResource("3_mf3lo")
 expand_icon = true
 
