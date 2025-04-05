@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbt1w2i8qsedv"]
+
+[ext_resource type="Texture2D" uid="uid://dvnfco3gpj603" path="res://Material/Textures/Goal.png" id="1_tntwx"]
+
+[resource]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.666667)
+albedo_texture = ExtResource("1_tntwx")
