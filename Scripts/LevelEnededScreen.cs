@@ -16,7 +16,7 @@ public partial class LevelEnededScreen : Control
     }
 
 
-	public void Init(bool isNewBestTime)
+	public void Init()
 	{
 		if (!FileAccess.FileExists(SaveAndLoad.TIME_SAVE_FILE_PATH))
     	{

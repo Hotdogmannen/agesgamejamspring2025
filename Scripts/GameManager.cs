@@ -12,6 +12,7 @@ public partial class GameManager : Node3D
 
 	private PackedScene _winScreen { get; set; }
 	private PackedScene _timesUpScreen { get; set; }
+	private PackedScene _loseScreen { get; set; }
 
 	[ExportCategory("Countdown")]
 	[Export] private float _countDownTime = 5.0f;
@@ -23,11 +24,13 @@ public partial class GameManager : Node3D
 	[Export] private float _levelTime = 300;
 
 	private bool _isCountdown = false;
+	private bool _hasGhostShipFinished = false;
 
     public override void _Ready()
     {
 		_winScreen = ResourceLoader.Load<PackedScene>("Scenes/Menus/WinScreen.tscn");
 		_timesUpScreen = ResourceLoader.Load<PackedScene>("Scenes/Menus/TimesUpScreen.tscn");
+		_loseScreen = ResourceLoader.Load<PackedScene>("Scenes/Menus/LoseScreen.tscn");
 
 		_levelTimer.WaitTime = _levelTime;
 		_isCountdown = true;
@@ -78,6 +81,11 @@ public partial class GameManager : Node3D
 		}
 	}
 
+	public void OnShipReachedEnd()
+	{
+		_hasGhostShipFinished = true;
+	}
+
 	private void OnCountDownFinishedFunc()
 	{
 		_countDownLabel.Text = "";
@@ -89,10 +97,22 @@ public partial class GameManager : Node3D
 	public void OnPlayerEnterGoal()
 	{
 		_levelTimer.Stop();
-		EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
-		LevelEnededScreen screen =_winScreen.Instantiate<LevelEnededScreen>();
-		screen.Init(SaveAndLoad.HasBetterTime((float)_levelTimer.TimeLeft));
-		GetTree().Root.AddChild(screen);
+
+		if(_hasGhostShipFinished)
+		{
+			EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
+			LevelEnededScreen screen =_loseScreen.Instantiate<LevelEnededScreen>();
+			screen.Init();
+			GetTree().Root.AddChild(screen);
+		}
+		else
+		{
+			EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
+			LevelEnededScreen screen =_winScreen.Instantiate<LevelEnededScreen>();
+			screen.Init();
+			GetTree().Root.AddChild(screen);
+		}
+
 	}
 
 	public void OnTimerFinished()
@@ -100,7 +120,7 @@ public partial class GameManager : Node3D
 		_levelTimer.Stop();
 		EmitSignal(SignalName.OnLevelEnded, 2, (float)_levelTimer.TimeLeft);
 		LevelEnededScreen screen =_timesUpScreen.Instantiate<LevelEnededScreen>();
-		screen.Init(false);
+		screen.Init();
 		GetTree().Root.AddChild(screen);
 	}
 }

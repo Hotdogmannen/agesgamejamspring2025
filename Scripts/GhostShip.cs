@@ -3,6 +3,8 @@ using Godot;
 
 public partial class GhostShip : Node3D
 {
+	[Signal] public delegate void OnShipReachedEndEventHandler();
+
 	[Export] private float _positionDifference = 0.1f;
 	[Export] public float oarSpeed {get; set;}
 
@@ -63,6 +65,7 @@ public partial class GhostShip : Node3D
 		if(endIndex > _playerPositions.Count - 1)
 		{
 			_canMove = false;
+			EmitSignal(SignalName.OnShipReachedEnd);
 			return;
 		}
 
@@ -76,20 +79,6 @@ public partial class GhostShip : Node3D
     {
 		SetOarRotation(delta, oarLeft, _currentTime * oarSpeed);
 		SetOarRotation(delta, oarRight, _currentTime * oarSpeed, true);
-
-        // if(leftOarPower > margin && leftOarPower <= 1f){
-        //     SetOarRotation(delta, oarLeft,leftOarPower);
-        // }
-        // else{
-        //     SetOarRotation(delta, oarLeft,0);
-        // }
-        // if(rightOarPower > margin && rightOarPower <= 1f){
-        //     SetOarRotation(delta, oarRight,rightOarPower, true);
-        // }
-        // else{
-        //     SetOarRotation(delta, oarRight,0, true);
-            
-        // }
     }
 
 	private void SetOarRotation(double delta,Node3D oar, float power,bool flipped = false){

@@ -62,3 +62,4 @@ environment = SubResource("Environment_d31q8")
 [connection signal="OnCountDownFinished" from="GameManager" to="TestBoat" method="SetCanMove"]
 [connection signal="OnLevelEnded" from="GameManager" to="SaveAndLoad" method="OnLevelEnded"]
 [connection signal="OnLevelEnded" from="GameManager" to="TestBoat" method="SetCantMove"]
+[connection signal="OnShipReachedEnd" from="GhostShip" to="GameManager" method="OnShipReachedEnd"]

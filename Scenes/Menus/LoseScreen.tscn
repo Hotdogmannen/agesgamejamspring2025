@@ -1,0 +1,140 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvni2tu52in63"]
+
+[ext_resource type="Script" uid="uid://c0s3fwglvip3h" path="res://Scripts/LevelEnededScreen.cs" id="1_0jeo8"]
+[ext_resource type="Texture2D" uid="uid://dmoyd88ml4btu" path="res://UI/Icons/ReplayIcon.svg" id="1_uv52l"]
+[ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="2_jx6up"]
+[ext_resource type="Texture2D" uid="uid://k8omasyf8vt3" path="res://UI/Icons/MenuIcon.svg" id="3_jcg7k"]
+[ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="4_4d1ot"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0ng5"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_15pn5"]
+font_size = 26
+
+[node name="LoseScreen" type="Control" node_paths=PackedStringArray("_autoSelectButton", "bestTimeLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0jeo8")
+_autoSelectButton = NodePath("ColorRect/Buttons/RestartButton")
+bestTimeLabel = NodePath("ColorRect/BestTimeLabel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.844628, 0.461311, 0.394977, 0.192157)
+
+[node name="ScreenTitle" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -287.0
+offset_right = 287.0
+offset_bottom = 212.0
+grow_horizontal = 2
+text = "You Lose"
+label_settings = ExtResource("4_4d1ot")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestTimeLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.283
+anchor_top = 0.372
+anchor_right = 0.717
+anchor_bottom = 0.444
+offset_left = -0.0160217
+offset_top = -0.0559998
+offset_right = 0.0159912
+offset_bottom = 0.287964
+grow_horizontal = 2
+grow_vertical = 2
+text = "Best Time: idk"
+label_settings = SubResource("LabelSettings_f0ng5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -295.0
+offset_right = 144.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="ColorRect/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "
+"
+icon = ExtResource("1_uv52l")
+expand_icon = true
+
+[node name="Label" type="Label" parent="ColorRect/Buttons/RestartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+label_settings = ExtResource("2_jx6up")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="ColorRect/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+icon = ExtResource("3_jcg7k")
+expand_icon = true
+
+[node name="Label" type="Label" parent="ColorRect/Buttons/MainMenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+label_settings = ExtResource("2_jx6up")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeningfulText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.283
+anchor_top = 0.478
+anchor_right = 0.717
+anchor_bottom = 0.551
+offset_left = -0.0160217
+offset_top = 0.255981
+offset_right = 0.0159912
+offset_bottom = -0.0480042
+grow_horizontal = 2
+grow_vertical = 2
+text = "The next ghost ship will not be you!"
+label_settings = SubResource("LabelSettings_15pn5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ColorRect/Buttons/RestartButton" to="." method="OnRestart"]
+[connection signal="pressed" from="ColorRect/Buttons/MainMenuButton" to="." method="OnMainMenu"]
