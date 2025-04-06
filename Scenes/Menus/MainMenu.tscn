@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bdlhr5py25n36" path="res://UI/Icons/PlayIcon.svg" id="5_q15nq"]
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="6_mb40c"]
 [ext_resource type="Texture2D" uid="uid://ctyp4vcywgbsr" path="res://UI/Icons/QuitIcon.svg" id="7_pbd8g"]
-[ext_resource type="Shader" path="res://Shaders/ScrollingTexture.gdshader" id="8_pbd8g"]
+[ext_resource type="Shader" uid="uid://dpwyl5jjdy4w1" path="res://Shaders/ScrollingTexture.gdshader" id="8_pbd8g"]
 [ext_resource type="Texture2D" uid="uid://b48jdpflxac6j" path="res://UI/Gamepad Layout.png" id="9_7as8u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pbd8g"]

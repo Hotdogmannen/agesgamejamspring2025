@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c0s3fwglvip3h" path="res://Scripts/LevelEnededScreen.cs" id="1_f0gwn"]
 [ext_resource type="Shader" uid="uid://dpwyl5jjdy4w1" path="res://Shaders/ScrollingTexture.gdshader" id="2_f0gwn"]
 [ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="4_piaga"]
-[ext_resource type="Theme" uid="uid://bn6ojty7wnh4y" path="res://UI/ButtonTheme.tres" id="5_lsnr7"]
+[ext_resource type="Theme" uid="uid://chf17t76r2edi" path="res://UI/ButtonTheme.tres" id="5_lsnr7"]
 [ext_resource type="Texture2D" uid="uid://dmoyd88ml4btu" path="res://UI/Icons/ReplayIcon.svg" id="5_rntwc"]
 [ext_resource type="LabelSettings" uid="uid://bkx2s42fymuqm" path="res://UI/ButtonsLabelSetting.tres" id="6_rixsh"]
 [ext_resource type="Texture2D" uid="uid://k8omasyf8vt3" path="res://UI/Icons/MenuIcon.svg" id="7_mx0x8"]

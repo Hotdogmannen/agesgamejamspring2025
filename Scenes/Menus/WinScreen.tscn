@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://k8omasyf8vt3" path="res://UI/Icons/MenuIcon.svg" id="3_mf3lo"]
 [ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="3_xos4w"]
 [ext_resource type="Texture2D" uid="uid://dvnfco3gpj603" path="res://Material/Textures/Goal.png" id="4_1emm1"]
-[ext_resource type="Theme" uid="uid://bn6ojty7wnh4y" path="res://UI/ButtonTheme.tres" id="5_xos4w"]
+[ext_resource type="Theme" uid="uid://chf17t76r2edi" path="res://UI/ButtonTheme.tres" id="5_xos4w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1emm1"]
 shader = ExtResource("2_sdatk")
