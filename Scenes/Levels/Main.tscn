@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwm4ixrcj6cql"]
+[gd_scene load_steps=21 format=3 uid="uid://dwm4ixrcj6cql"]
 
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="1_a113d"]
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_d31q8"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cbbbloecfxwim" path="res://Scenes/ModelScenes/rock_3.tscn" id="11_otbr7"]
 [ext_resource type="PackedScene" uid="uid://dvgj1w0lekeun" path="res://Scenes/Goal.tscn" id="12_mv52a"]
 [ext_resource type="PackedScene" uid="uid://hwf2tjye6ymm" path="res://Scenes/VideTestStuff/booster_pad.tscn" id="13_otbr7"]
+[ext_resource type="PackedScene" path="res://Scenes/ModelScenes/Lighthouse.tscn" id="14_5wxa7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_07780"]
 
@@ -197,6 +198,15 @@ transform = Transform3D(-29.0988, -99.5034, -20.6843, 37.7933, -40.0134, 64.4401
 
 [node name="Rock19" parent="." instance=ExtResource("11_otbr7")]
 transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, -119.285, 0, 51.4628)
+
+[node name="Lighthouse" parent="." instance=ExtResource("14_5wxa7")]
+transform = Transform3D(-0.768842, 0, 0.639439, 0, 1, 0, -0.639439, 0, -0.768842, -32.557, 2.61341, 92.398)
+
+[node name="Rock20" parent="." instance=ExtResource("11_otbr7")]
+transform = Transform3D(62.6138, 71.6885, -30.6638, 0.411385, 39.0228, 92.0709, 77.9703, -57.7752, 24.1387, -49.2297, -0.968245, -0.370649)
+
+[node name="Rock21" parent="." instance=ExtResource("10_mv52a")]
+transform = Transform3D(-230.351, -101.094, -243.349, 262.133, -120.938, -197.89, -26.9273, -312.497, 155.309, -33.9254, 0.550638, 12.0371)
 
 [connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
 [connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]
