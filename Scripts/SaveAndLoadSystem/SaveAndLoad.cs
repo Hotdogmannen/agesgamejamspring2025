@@ -74,6 +74,8 @@ public partial class SaveAndLoad : Node
 			return;
 		}
 
+		_playerPositions.Add(_target.Position);
+
 		using FileAccess positionsFile = FileAccess.Open(POSITION_SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
 		
 		foreach (Vector3 pos in _playerPositions)
