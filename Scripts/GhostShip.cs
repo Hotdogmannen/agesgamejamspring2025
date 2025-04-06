@@ -21,11 +21,12 @@ public partial class GhostShip : Node3D
     [Export] Node3D oarRight { get; set; }
 
 	private List<Vector3> _playerPositions;
-	private int _pathIndex = 1;
+	
 	private bool _canMove = false;
 	private float _currentTime = 0.0f;
 	private float _timeBetweenSaves = 0.0f;
 	private double animationTime;
+
     public void Init(List<Vector3> positions, float timeBetweenSaves)
 	{
 		if(positions == null)
@@ -72,7 +73,13 @@ public partial class GhostShip : Node3D
 		float lerpTime = (_currentTime - startIndex*_timeBetweenSaves)/_timeBetweenSaves;
 		Vector3 newPos = _playerPositions[startIndex].Lerp(_playerPositions[endIndex], lerpTime);
 
-		LookAt(newPos);
+		//RotationDegrees = RotationDegrees.Lerp(RotationDegrees.Rotated(Vector3.Up, Position.AngleTo(newPos)), _currentTime);
+
+		//RotationDegrees.Rotated(Vector3.Up, Position.AngleTo(newPos));
+
+		//LookAt(Position.Lerp(newPos, _currentTime));
+
+		//Rotate(Vector3.Up, Position.SignedAngleTo(newPos, Vector3.Up));
 
 		Position = newPos;
 	}

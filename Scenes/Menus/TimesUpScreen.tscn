@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8iu1lsx4psdc"]
+[gd_scene load_steps=11 format=3 uid="uid://b8iu1lsx4psdc"]
 
 [ext_resource type="Script" uid="uid://c0s3fwglvip3h" path="res://Scripts/LevelEnededScreen.cs" id="1_f0gwn"]
 [ext_resource type="Shader" uid="uid://dpwyl5jjdy4w1" path="res://Shaders/ScrollingTexture.gdshader" id="2_f0gwn"]
-[ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="3_lsnr7"]
 [ext_resource type="LabelSettings" uid="uid://3hucups0mvd1" path="res://UI/TitleLabelSettings.tres" id="4_piaga"]
 [ext_resource type="Theme" uid="uid://bn6ojty7wnh4y" path="res://UI/ButtonTheme.tres" id="5_lsnr7"]
 [ext_resource type="Texture2D" uid="uid://dmoyd88ml4btu" path="res://UI/Icons/ReplayIcon.svg" id="5_rntwc"]
@@ -30,7 +29,7 @@ script = ExtResource("1_f0gwn")
 _autoSelectButton = NodePath("ColorRect/Buttons/RestartButton")
 bestTimeLabel = NodePath("ColorRect/BestTimeLabel")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="ColorRect" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_gb0ol")
 layout_mode = 1
@@ -41,7 +40,7 @@ offset_top = -188.0
 offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_lsnr7")
+color = Color(0.847059, 0.258824, 0.321569, 0.490196)
 
 [node name="ColorRect" type="Control" parent="."]
 layout_mode = 1
