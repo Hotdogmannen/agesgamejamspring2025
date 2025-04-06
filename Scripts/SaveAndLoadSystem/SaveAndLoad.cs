@@ -89,7 +89,7 @@ public partial class SaveAndLoad : Node
 	{
 		if(HasBetterTime(time))
 		{
-			using FileAccess timeFile = FileAccess.Open(POSITION_SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
+			using FileAccess timeFile = FileAccess.Open(TIME_SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
 			timeFile.StoreLine(Json.Stringify(time));
 
 			timeFile.Close();
@@ -101,7 +101,7 @@ public partial class SaveAndLoad : Node
 		if (!FileAccess.FileExists(TIME_SAVE_FILE_PATH))
     	{
 			GD.PrintErr("Save file not found at: " + TIME_SAVE_FILE_PATH);
-        	return false;
+        	return true;
     	}
 		
 		using FileAccess file = FileAccess.Open(TIME_SAVE_FILE_PATH, FileAccess.ModeFlags.Read);
@@ -116,7 +116,7 @@ public partial class SaveAndLoad : Node
 
 		float bestTime = (float)json.Data;
 
-		return time < bestTime;
+		return time > bestTime;
 	}
 
 	public List<Vector3> LoadData()

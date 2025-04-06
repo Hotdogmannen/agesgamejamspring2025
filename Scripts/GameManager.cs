@@ -26,6 +26,7 @@ public partial class GameManager : Node3D
 	private bool _isCountdown = false;
 	private bool _hasGhostShipFinished = false;
 	private bool _panic = false;
+	private bool _levelEnded = false;
 
     public override void _Ready()
     {
@@ -42,8 +43,8 @@ public partial class GameManager : Node3D
 		if(Input.IsKeyPressed(Key.P) && !_panic)
 		{
 			_panic = true;
-			OnTimerFinished();
 			EmitSignal(SignalName.OnLevelEnded, 2, (float)_levelTimer.TimeLeft);
+			OnTimerFinished();
 		}
 
 		CountDown((float)delta);
@@ -104,7 +105,8 @@ public partial class GameManager : Node3D
 
 	public void OnPlayerEnterGoal()
 	{
-		_levelTimer.Stop();
+		if(_levelEnded)
+			return;
 
 		if(_hasGhostShipFinished)
 		{
@@ -121,14 +123,20 @@ public partial class GameManager : Node3D
 			AddChild(screen);
 		}
 
+		_levelTimer.Stop();
+		_levelEnded = true;
 	}
 
 	public void OnTimerFinished()
 	{
-		_levelTimer.Stop();
+		if(_levelEnded)
+			return;
+		_levelEnded = true;
+
 		EmitSignal(SignalName.OnLevelEnded, 2, (float)_levelTimer.TimeLeft);
 		LevelEnededScreen screen =_timesUpScreen.Instantiate<LevelEnededScreen>();
 		screen.Init();
 		AddChild(screen);
+		_levelTimer.Stop();
 	}
 }
