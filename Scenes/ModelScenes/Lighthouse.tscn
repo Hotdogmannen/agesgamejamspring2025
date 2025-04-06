@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=4 uid="uid://n7k0cxi05ifw"]
+[gd_scene load_steps=44 format=4 uid="uid://n7k0cxi05ifw"]
 
 [ext_resource type="Material" uid="uid://dcnfs0efoshnk" path="res://Material/OarMaterial.tres" id="1_jx8sg"]
+[ext_resource type="Environment" uid="uid://dbchqsk3a40oy" path="res://Material/Felix_Environment.tres" id="1_p722c"]
 [ext_resource type="Material" uid="uid://bsqobvye3jqi4" path="res://Material/LighthouseWhite.tres" id="2_p722c"]
 [ext_resource type="Material" uid="uid://dy02mpe41p2kq" path="res://Material/BuoyMaterial.tres" id="3_rpuvo"]
 [ext_resource type="Material" uid="uid://b2kvsc74ojmtc" path="res://Material/RockMaterial.tres" id="4_xfghn"]
@@ -412,6 +413,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8rg35")
 
 [node name="Lighthouse" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_p722c")
 
 [node name="Lighthouse" type="Node3D" parent="."]
 

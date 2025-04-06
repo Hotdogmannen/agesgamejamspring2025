@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://bhheotn0xwqga"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://bhheotn0xwqga"]
 
 [ext_resource type="Texture2D" uid="uid://dypebvludsf2u" path="res://Material/Textures/VattenGameJam_tiling.png" id="1_58xs6"]
 
@@ -11,9 +11,6 @@ operator = 2
 parameter_name = "WaterSpeed"
 default_value_enabled = true
 default_value = Vector2(-0.006, -0.006)
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_o0rx2"]
-input_name = "uv"
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_58xs6"]
 parameter_name = "WaterTransparency"
@@ -102,7 +99,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-413.35, 95.1613)
+graph_offset = Vector2(-469.264, -91.133)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_n203w")
 nodes/fragment/2/position = Vector2(-460, 20)
 nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_o0rx2")
@@ -121,8 +118,6 @@ nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_58xs6")
 nodes/fragment/10/position = Vector2(-1040, 40)
 nodes/fragment/11/node = SubResource("VisualShaderNodeVec2Parameter_n203w")
 nodes/fragment/11/position = Vector2(-1400, 140)
-nodes/fragment/12/node = SubResource("VisualShaderNodeInput_o0rx2")
-nodes/fragment/12/position = Vector2(-640, 500)
 nodes/fragment/13/node = SubResource("VisualShaderNodeFloatParameter_58xs6")
 nodes/fragment/13/position = Vector2(40, 320)
 nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 2, 0, 4, 0, 4, 0, 0, 0, 6, 0, 4, 1, 7, 0, 2, 2, 8, 0, 3, 1, 9, 0, 10, 0, 10, 0, 3, 2, 11, 0, 10, 1, 13, 0, 0, 1)
