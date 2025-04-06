@@ -24,7 +24,6 @@ public partial class Buoy : Node3D
 
 
     public void OnBodyEntered(Node body){
-        GD.Print(body.Name);
         if(body is RigidBody3D rb){
             Vector3 dir = rb.GlobalPosition-GlobalPosition;
             rb.ApplyImpulse(dir.Normalized() * bounceForce);

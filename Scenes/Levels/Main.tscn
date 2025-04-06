@@ -17,20 +17,6 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_07780"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t355s"]
-sky_top_color = Color(0.143632, 0.293692, 0.511907, 1)
-sky_horizon_color = Color(0.436871, 0.684571, 0.870305, 1)
-ground_bottom_color = Color(0.435294, 0.686275, 0.870588, 1)
-ground_horizon_color = Color(0.435294, 0.686275, 0.870588, 1)
-
-[sub_resource type="Sky" id="Sky_07780"]
-sky_material = SubResource("ProceduralSkyMaterial_t355s")
-
-[sub_resource type="Environment" id="Environment_d31q8"]
-background_mode = 2
-sky = SubResource("Sky_07780")
-reflected_light_source = 2
-
 [sub_resource type="Curve3D" id="Curve3D_4ih0k"]
 closed = true
 bake_interval = 30.0
@@ -49,6 +35,20 @@ _data = {
 }
 point_count = 7
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t355s"]
+sky_top_color = Color(0.143632, 0.293692, 0.511907, 1)
+sky_horizon_color = Color(0.436871, 0.684571, 0.870305, 1)
+ground_bottom_color = Color(0.435294, 0.686275, 0.870588, 1)
+ground_horizon_color = Color(0.435294, 0.686275, 0.870588, 1)
+
+[sub_resource type="Sky" id="Sky_07780"]
+sky_material = SubResource("ProceduralSkyMaterial_t355s")
+
+[sub_resource type="Environment" id="Environment_d31q8"]
+background_mode = 2
+sky = SubResource("Sky_07780")
+reflected_light_source = 2
+
 [node name="Root" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_a113d")]
@@ -61,14 +61,7 @@ _timeBetweenSaves = 0.5
 _ghostShip = NodePath("../GhostShip")
 
 [node name="GhostShip" parent="." instance=ExtResource("4_07780")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-oarSpeed = 0.0
-BobbingSpeed = 0.0
-BobbingVelocitySpeedupPercentage = 0.0
-BobbingMagnitude = 0.0
-OarAnimationHeight = 0.0
-OarAnimationWidth = 0.0
-OarAnimationSharpness = 0.0
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7237, 1.52588e-05, 7.4823)
@@ -78,6 +71,127 @@ transform = Transform3D(127.448, 0, 0, 0, 1, 0, 0, 0, 127.448, 0, -0.391561, 0)
 material_override = ExtResource("3_t355s")
 mesh = SubResource("PlaneMesh_07780")
 skeleton = NodePath("../..")
+
+[node name="Buoy" parent="Map" instance=ExtResource("8_nl3m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4897, -0.343015, 35.5807)
+
+[node name="Buoy3" parent="Map" instance=ExtResource("8_nl3m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7709, -0.343015, 34.89)
+
+[node name="Buoy2" parent="Map" instance=ExtResource("8_nl3m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4307, -0.343015, 45.6607)
+
+[node name="Rock1" parent="Map" instance=ExtResource("9_4ih0k")]
+transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, 22.2672, 0.168354, 24.4389)
+
+[node name="Rock2" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, 23.8619, 0.550623, 17.7159)
+
+[node name="Rock3" parent="Map" instance=ExtResource("11_otbr7")]
+transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, 15.049, -1.52588e-05, 20.9684)
+
+[node name="Rock4" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(-60.9608, -167.943, 21.8851, 134.811, -62.1966, -101.772, 102.517, -18.0766, 146.845, -26.3583, 0.550623, 21.2679)
+
+[node name="Rock5" parent="Map" instance=ExtResource("11_otbr7")]
+transform = Transform3D(-58.7242, 74.6178, -31.3631, 0.411385, 39.0228, 92.0709, 80.9401, 53.9389, -23.2228, -19.4614, -1.52588e-05, 16.4059)
+
+[node name="Rock6" parent="Map" instance=ExtResource("9_4ih0k")]
+transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, -1.35378, 0.168356, 37.1258)
+
+[node name="Rock7" parent="Map" instance=ExtResource("9_4ih0k")]
+transform = Transform3D(-11.8864, -100.63, -26.6075, 37.7933, -40.0134, 64.4401, -93.7009, -3.37343, 29.3665, -5.06327, 0.168354, -37.6693)
+
+[node name="Rock8" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(55.7874, -13.1628, 81.9421, 74.8949, -34.5536, -56.5403, 35.7563, 92.9128, -9.4183, -11.7291, 0.550623, -39.4884)
+
+[node name="Rock9" parent="Map" instance=ExtResource("11_otbr7")]
+transform = Transform3D(99.9709, 2.03101, -1.30749, 0.411385, 39.0228, 92.0709, 2.38019, -92.0494, 39.003, -8.77367, -1.52588e-05, -30.5715)
+
+[node name="Path3D" type="Path3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7237, -0.342549, -7.4823)
+curve = SubResource("Curve3D_4ih0k")
+script = ExtResource("7_saai4")
+SceneToInstatiate = ExtResource("8_nl3m6")
+spawnSpacing = 2.5
+
+[node name="Rock10" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(-22.2152, -93.4826, 27.7034, 74.8949, -34.5536, -56.5403, 62.4278, 8.18793, 77.6899, -49.8338, 0.550622, 29.1741)
+
+[node name="Path3D2" type="Path3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7237, -1.52588e-05, -7.4823)
+curve = SubResource("Curve3D_5wxa7")
+script = ExtResource("7_saai4")
+SceneToInstatiate = ExtResource("8_nl3m6")
+spawnSpacing = 2.5
+
+[node name="BoosterPad2" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.781302, 0, -0.624153, 0, 1, 0, 0.624153, 0, -0.781302, -54.907, -0.385047, 41.698)
+
+[node name="BoosterPad3" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.999087, 0, 0.0427301, 0, 1, 0, -0.0427301, 0, -0.999087, -61.4208, -0.385047, 33.2745)
+
+[node name="BoosterPad4" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.831886, 0, 0.554946, 0, 1, 0, -0.554946, 0, -0.831886, -60.5666, -0.385048, 20.4375)
+
+[node name="Buoy4" parent="Map" instance=ExtResource("8_nl3m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5801, -0.343015, 21.7642)
+
+[node name="BoosterPad6" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(0.999733, 0, -0.0230885, 0, 1, 0, 0.0230885, 0, 0.999733, 43.306, -0.385048, 14.7428)
+
+[node name="BoosterPad7" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.288313, 0, 0.957536, 0, 1, 0, -0.957536, 0, -0.288313, -33.786, -0.385048, -13.8663)
+
+[node name="BoosterPad8" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.386518, 0, 0.922282, 0, 1, 0, -0.922282, 0, -0.386518, -16.0866, -0.385048, -13.6982)
+
+[node name="BoosterPad9" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(-0.23977, 0, -0.970829, 0, 1, 0, 0.970829, 0, -0.23977, -45.7423, -0.385047, 44.0997)
+Force = 5.0
+
+[node name="Rock11" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(43.9352, 168.685, -44.8912, 134.811, -62.1966, -101.772, -110.886, -8.78016, -141.517, 47.5054, 0.550623, 44.4189)
+
+[node name="Rock12" parent="Map" instance=ExtResource("11_otbr7")]
+transform = Transform3D(45.1479, -82.2262, 34.6484, 0.411386, 39.0228, 92.0709, -89.2272, -41.4256, 17.9563, 41.4667, -1.52588e-05, 50.3129)
+
+[node name="Rock13" parent="Map" instance=ExtResource("11_otbr7")]
+transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, -46.1186, -1.52588e-05, 57.117)
+
+[node name="Rock14" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, -57.4548, -1.52588e-05, 52.5503)
+
+[node name="Rock15" parent="Map" instance=ExtResource("9_4ih0k")]
+transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, -49.6051, -1.52588e-05, 52.4301)
+
+[node name="Rock16" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, -70.8856, -1.52588e-05, 37.6868)
+
+[node name="Rock17" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(-83.7681, 19.5181, -122.89, 112.342, -51.8305, -84.8103, -53.4985, -139.401, 14.3269, -68.7628, -1.71661e-05, 50.4569)
+
+[node name="Rock18" parent="Map" instance=ExtResource("9_4ih0k")]
+transform = Transform3D(-29.0988, -99.5034, -20.6843, 37.7933, -40.0134, 64.4401, -89.8577, 15.3933, 33.8011, -61.6488, -1.66893e-05, 47.7826)
+
+[node name="Rock19" parent="Map" instance=ExtResource("11_otbr7")]
+transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, -74.5615, -1.52588e-05, 43.9805)
+
+[node name="Lighthouse" parent="Map" instance=ExtResource("14_5wxa7")]
+transform = Transform3D(-0.768842, 0, 0.639439, 0, 1, 0, -0.639439, 0, -0.768842, 12.1667, 2.61339, 84.9157)
+
+[node name="Rock20" parent="Map" instance=ExtResource("11_otbr7")]
+transform = Transform3D(62.6138, 71.6885, -30.6638, 0.411385, 39.0228, 92.0709, 77.9703, -57.7752, 24.1387, -4.50602, -0.968261, -7.85295)
+
+[node name="Rock21" parent="Map" instance=ExtResource("10_mv52a")]
+transform = Transform3D(-230.351, -101.094, -243.349, 262.133, -120.938, -197.89, -26.9273, -312.497, 155.309, 10.7984, 0.550623, 4.55482)
+
+[node name="BoosterPad10" parent="Map" instance=ExtResource("13_otbr7")]
+transform = Transform3D(0.941523, 0, -0.336947, 0, 1, 0, 0.336947, 0, 0.941523, 38.0989, -0.385048, 23.8871)
+
+[node name="Goal" parent="Map" node_paths=PackedStringArray("_gameManager") instance=ExtResource("12_mv52a")]
+transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 4.78833, -1.43051e-05, -78.9473)
+_gameManager = NodePath("../../GameManager")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.93644, -0.113408, 0.331993, -0.0894637, 0.837832, 0.538548, -0.33923, -0.534019, 0.774433, 0, 0, 0)
@@ -90,123 +204,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 maxSpeedFOV = 4.0
 
 [node name="AmbientPlayer" parent="." instance=ExtResource("6_oi5um")]
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.342534, 0)
-curve = SubResource("Curve3D_4ih0k")
-script = ExtResource("7_saai4")
-SceneToInstatiate = ExtResource("8_nl3m6")
-spawnSpacing = 2.5
-
-[node name="Buoy" parent="." instance=ExtResource("8_nl3m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.234, -0.343, 43.063)
-
-[node name="Buoy3" parent="." instance=ExtResource("8_nl3m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9528, -0.343, 42.3723)
-
-[node name="Buoy2" parent="." instance=ExtResource("8_nl3m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.293, -0.343, 53.143)
-
-[node name="Rock1" parent="." instance=ExtResource("9_4ih0k")]
-transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, -22.4565, 0.168369, 31.9212)
-
-[node name="Rock2" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, -20.8618, 0.550638, 25.1982)
-
-[node name="Rock3" parent="." instance=ExtResource("11_otbr7")]
-transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, -29.6747, 0, 28.4507)
-
-[node name="Rock4" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(-60.9608, -167.943, 21.8851, 134.811, -62.1966, -101.772, 102.517, -18.0766, 146.845, -71.082, 0.550638, 28.7502)
-
-[node name="Rock5" parent="." instance=ExtResource("11_otbr7")]
-transform = Transform3D(-58.7242, 74.6178, -31.3631, 0.411385, 39.0228, 92.0709, 80.9401, 53.9389, -23.2228, -64.1851, 0, 23.8882)
-
-[node name="Rock6" parent="." instance=ExtResource("9_4ih0k")]
-transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, -46.0775, 0.168371, 44.6081)
-
-[node name="Rock7" parent="." instance=ExtResource("9_4ih0k")]
-transform = Transform3D(-11.8864, -100.63, -26.6075, 37.7933, -40.0134, 64.4401, -93.7009, -3.37343, 29.3665, -49.787, 0.168369, -30.187)
-
-[node name="Rock8" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(55.7874, -13.1628, 81.9421, 74.8949, -34.5536, -56.5403, 35.7563, 92.9128, -9.4183, -56.4528, 0.550638, -32.0061)
-
-[node name="Rock9" parent="." instance=ExtResource("11_otbr7")]
-transform = Transform3D(99.9709, 2.03101, -1.30749, 0.411385, 39.0228, 92.0709, 2.38019, -92.0494, 39.003, -53.4974, 0, -23.0892)
-
-[node name="Goal" parent="." node_paths=PackedStringArray("_gameManager") instance=ExtResource("12_mv52a")]
-transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, -39.9354, 9.53674e-07, -71.465)
-_gameManager = NodePath("../GameManager")
-
-[node name="Rock10" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(-22.2152, -93.4826, 27.7034, 74.8949, -34.5536, -56.5403, 62.4278, 8.18793, 77.6899, -94.5575, 0.550637, 36.6564)
-
-[node name="Path3D2" type="Path3D" parent="."]
-curve = SubResource("Curve3D_5wxa7")
-script = ExtResource("7_saai4")
-SceneToInstatiate = ExtResource("8_nl3m6")
-spawnSpacing = 2.5
-
-[node name="BoosterPad2" parent="." instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.781302, 0, -0.624153, 0, 1, 0, 0.624153, 0, -0.781302, -99.6307, -0.385032, 49.1803)
-
-[node name="BoosterPad3" parent="." instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.999087, 0, 0.0427301, 0, 1, 0, -0.0427301, 0, -0.999087, -106.145, -0.385032, 40.7568)
-
-[node name="BoosterPad4" parent="." instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.831886, 0, 0.554946, 0, 1, 0, -0.554946, 0, -0.831886, -105.29, -0.385033, 27.9198)
-
-[node name="Buoy4" parent="." instance=ExtResource("8_nl3m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.3039, -0.343, 29.2465)
-
-[node name="BoosterPad6" parent="." instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.547271, 0, 0.836955, 0, 1, 0, -0.836955, 0, -0.547271, -84.5803, -0.385033, 5.15976)
-
-[node name="BoosterPad7" parent="." instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.41428, 0, 0.910149, 0, 1, 0, -0.910149, 0, -0.41428, -75.7897, -0.385033, -7.29481)
-
-[node name="BoosterPad8" parent="." instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.386518, 0, 0.922282, 0, 1, 0, -0.922282, 0, -0.386518, -60.8103, -0.385033, -6.21594)
-
-[node name="BoosterPad9" parent="." instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.23977, 0, -0.970829, 0, 1, 0, 0.970829, 0, -0.23977, -90.466, -0.385032, 51.582)
-Force = 5.0
-
-[node name="Rock11" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(43.9352, 168.685, -44.8912, 134.811, -62.1966, -101.772, -110.886, -8.78016, -141.517, 2.78171, 0.550638, 51.9012)
-
-[node name="Rock12" parent="." instance=ExtResource("11_otbr7")]
-transform = Transform3D(45.1479, -82.2262, 34.6484, 0.411386, 39.0228, 92.0709, -89.2272, -41.4256, 17.9563, -3.25706, 0, 57.7952)
-
-[node name="Rock13" parent="." instance=ExtResource("11_otbr7")]
-transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, -90.8423, 0, 64.5993)
-
-[node name="Rock14" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, -102.179, 0, 60.0326)
-
-[node name="Rock15" parent="." instance=ExtResource("9_4ih0k")]
-transform = Transform3D(93.2501, 5.16324e-06, -30.2415, 37.7933, -40.0134, 64.4401, -15.0191, -100.687, -25.6087, -94.3289, 0, 59.9124)
-
-[node name="Rock16" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(-33.8671, -93.3016, 12.1584, 74.8949, -34.5536, -56.5403, 56.9541, -10.0425, 81.5805, -115.609, 0, 45.1691)
-
-[node name="Rock17" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(-83.7681, 19.5181, -122.89, 112.342, -51.8305, -84.8103, -53.4985, -139.401, 14.3269, -113.486, -1.90735e-06, 57.9392)
-
-[node name="Rock18" parent="." instance=ExtResource("9_4ih0k")]
-transform = Transform3D(-29.0988, -99.5034, -20.6843, 37.7933, -40.0134, 64.4401, -89.8577, 15.3933, 33.8011, -106.373, -1.43051e-06, 55.2649)
-
-[node name="Rock19" parent="." instance=ExtResource("11_otbr7")]
-transform = Transform3D(0.970576, 92.0658, -39.0249, 0.411385, 39.0228, 92.0709, 99.9945, -1.05416, -4.08116e-06, -119.285, 0, 51.4628)
-
-[node name="Lighthouse" parent="." instance=ExtResource("14_5wxa7")]
-transform = Transform3D(-0.768842, 0, 0.639439, 0, 1, 0, -0.639439, 0, -0.768842, -32.557, 2.61341, 92.398)
-
-[node name="Rock20" parent="." instance=ExtResource("11_otbr7")]
-transform = Transform3D(62.6138, 71.6885, -30.6638, 0.411385, 39.0228, 92.0709, 77.9703, -57.7752, 24.1387, -49.2297, -0.968245, -0.370649)
-
-[node name="Rock21" parent="." instance=ExtResource("10_mv52a")]
-transform = Transform3D(-230.351, -101.094, -243.349, 262.133, -120.938, -197.89, -26.9273, -312.497, 155.309, -33.9254, 0.550638, 12.0371)
+AudioDelayRange = Vector2(10, 15)
 
 [connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
 [connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]
@@ -215,4 +213,4 @@ transform = Transform3D(-230.351, -101.094, -243.349, 262.133, -120.938, -197.89
 [connection signal="OnLevelEnded" from="GameManager" to="TestBoat" method="SetCantMove"]
 [connection signal="OnShipReachedEnd" from="GhostShip" to="GameManager" method="OnShipReachedEnd"]
 
-[editable path="Goal"]
+[editable path="Map/Goal"]

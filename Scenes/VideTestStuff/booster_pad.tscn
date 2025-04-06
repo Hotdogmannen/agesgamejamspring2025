@@ -9,13 +9,15 @@ size = Vector3(5, 1, 5)
 [sub_resource type="QuadMesh" id="QuadMesh_dm2qe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t65c0"]
+resource_local_to_scene = true
 transparency = 1
 albedo_texture = ExtResource("2_0adie")
 
 [node name="BoosterPad" type="Area3D"]
 transform = Transform3D(0.570785, 0, -0.821099, 0, 1, 0, 0.821099, 0, 0.570785, 0, 0, 0)
 script = ExtResource("1_rs41y")
-Force = 8.0
+Force = 5.5
+EffectSharpness = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_5wxa7")
