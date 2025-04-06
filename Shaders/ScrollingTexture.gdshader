@@ -7,6 +7,6 @@ void vertex() {
 	COLOR += color;
 	COLOR.a = color.a;
 	
-	UV.x += (TIME * 0.02) * (sin(TIME * 2.0f) * 0.1);
+	UV.x += (TIME * 0.01) * (sin(TIME * 1.5f) * 0.1);
 	UV.y += TIME * 0.05;
 }

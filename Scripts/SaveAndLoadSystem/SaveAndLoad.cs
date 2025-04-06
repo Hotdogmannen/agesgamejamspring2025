@@ -75,6 +75,14 @@ public partial class SaveAndLoad : Node
 		}
 
 		_playerPositions.Add(_target.Position);
+		//Sets the ghost next to the player instead of inside
+		int moveIndex = 8;
+		for (int i = 0; i < moveIndex; i++)
+		{
+			_playerPositions[i] += Vector3.Right * 2;
+		}
+		_playerPositions[moveIndex + 1] += Vector3.Right * 1;
+		_playerPositions[moveIndex + 2] += Vector3.Right * 0.5f;
 
 		using FileAccess positionsFile = FileAccess.Open(POSITION_SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
 		
@@ -118,7 +126,7 @@ public partial class SaveAndLoad : Node
 
 		float bestTime = (float)json.Data;
 
-		return time > bestTime;
+		return time < bestTime;
 	}
 
 	public List<Vector3> LoadData()
