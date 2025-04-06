@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://ck70jlwfynm0u" path="res://Material/WaterMaterial.tres" id="3_t355s"]
 [ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/GhostShip.tscn" id="4_07780"]
 [ext_resource type="PackedScene" uid="uid://cd7g03edhvqjq" path="res://Scenes/VideTestStuff/player_boat.tscn" id="5_d31q8"]
-[ext_resource type="Material" uid="uid://cfflaoyirp1j2" path="res://Material/BuoyRopeMaterial.tres" id="5_t65c0"]
+[ext_resource type="Material" path="res://Material/BuoyRopeMaterial.tres" id="5_t65c0"]
 [ext_resource type="PackedScene" uid="uid://drvp4poe30tp" path="res://Scenes/VideTestStuff/ambient_player.tscn" id="6_oi5um"]
 [ext_resource type="Script" uid="uid://scr6sbhn46fh" path="res://Scenes/Levels/PathInstantiate.cs" id="7_saai4"]
 [ext_resource type="PackedScene" uid="uid://gg8bik5u4fhx" path="res://Scenes/VideTestStuff/buoy.tscn" id="8_nl3m6"]
@@ -128,11 +128,11 @@ transform = Transform3D(-0.999087, 0, 0.0427301, 0, 1, 0, -0.0427301, 0, -0.9990
 EffectSharpness = 0.5
 
 [node name="BoosterPad7" parent="Map" instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.288313, 0, 0.957536, 0, 1, 0, -0.957536, 0, -0.288313, -33.786, -0.385048, -13.8663)
+transform = Transform3D(-0.422602, 0, 0.906315, 0, 1, 0, -0.906315, 0, -0.422602, -30.8784, -0.385048, -7.52265)
 EffectSharpness = 0.5
 
 [node name="BoosterPad8" parent="Map" instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.386518, 0, 0.922282, 0, 1, 0, -0.922282, 0, -0.386518, -16.0866, -0.385048, -13.6982)
+transform = Transform3D(-0.363007, 0, 0.931786, 0, 1, 0, -0.931786, 0, -0.363007, -20.1177, -0.385047, -18.892)
 EffectSharpness = 0.5
 
 [node name="BoosterPad9" parent="Map" instance=ExtResource("13_otbr7")]

@@ -9,11 +9,14 @@ public partial class BoosterPad : Area3D
     private MeshInstance3D mesh;
     private List<RigidBody3D> collidingBodies = new List<RigidBody3D>();
 
+    private AudioStreamPlayer3D audioPlayer;
+
 
     public override void _Ready()
     {
         base._Ready();
         mesh = GetNode<MeshInstance3D>("MeshInstance3D");
+        audioPlayer = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
     }
 
     public void OnBodyEntered(Node body){
@@ -23,7 +26,8 @@ public partial class BoosterPad : Area3D
             if(mesh.GetActiveMaterial(0) is StandardMaterial3D material){
                 material.AlbedoColor = new Color(1f,0.5f,0.5f);
             }
-            Scale = Vector3.One * 1.05f;
+            Scale = Vector3.One * 1.1f;
+            audioPlayer.Play();
             
         }
     }
