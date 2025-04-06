@@ -6,6 +6,7 @@ public partial class AmbientPlayer : Node
 
     [Export] public Vector2 AudioDelayRange {get; set;}
     private AudioStreamPlayer player;
+    private AudioStreamPlayer musicPlayer;
 
     float time;
     float curGoal;
@@ -13,7 +14,10 @@ public partial class AmbientPlayer : Node
     {
         base._Ready();
         player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        musicPlayer = GetNode<AudioStreamPlayer>("MusicPlayer");
         curGoal = (float)GD.RandRange(AudioDelayRange.X, AudioDelayRange.Y);
+
+        OnRaceStart();
     }
 
 
@@ -28,6 +32,13 @@ public partial class AmbientPlayer : Node
             curGoal = (float)GD.RandRange(AudioDelayRange.X, AudioDelayRange.Y);
             player.Play();
         }
+    }
+
+    public void OnRaceStart(){
+        musicPlayer.Play();
+    }
+    public void OnRaceEnd(int type, float time){
+        musicPlayer.Stop();
     }
 
 

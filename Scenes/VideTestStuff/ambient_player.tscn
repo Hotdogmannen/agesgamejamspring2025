@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://drvp4poe30tp"]
+[gd_scene load_steps=7 format=3 uid="uid://drvp4poe30tp"]
 
 [ext_resource type="Script" uid="uid://dyuaekic5ores" path="res://Scripts/VideTestScripts/AmbientPlayer.cs" id="1_kh4ur"]
 [ext_resource type="AudioStream" uid="uid://bxvfi6tmmrqqr" path="res://Audio/Seagull Ambient 1.wav" id="2_ujh48"]
 [ext_resource type="AudioStream" uid="uid://cpyhilgdrmkmi" path="res://Audio/Seagull Ambient 2.wav" id="3_7e35w"]
 [ext_resource type="AudioStream" uid="uid://bfuyg0rcak21c" path="res://Audio/Seagull Ambient 3.wav" id="4_sqxtd"]
+[ext_resource type="AudioStream" uid="uid://ct1k1bgp8f3df" path="res://Audio/dizzy_racing.wav" id="5_ujh48"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pj060"]
 streams_count = 3
@@ -17,3 +18,6 @@ AudioDelayRange = Vector2(3, 5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_pj060")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ujh48")
