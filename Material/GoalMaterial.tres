@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dvnfco3gpj603" path="res://Material/Textures/Goal.png" id="1_tntwx"]
 
 [resource]
+render_priority = 1
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.666667)
 albedo_texture = ExtResource("1_tntwx")
