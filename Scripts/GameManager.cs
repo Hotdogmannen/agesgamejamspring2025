@@ -96,8 +96,6 @@ public partial class GameManager : Node3D
 			EmitSignal(SignalName.OnCountDownFinished);
 			_levelTimer.Start();
 
-			
-
 			if(_countDownTime <= 0)
 			{
 				_countDownImage.Visible = false;

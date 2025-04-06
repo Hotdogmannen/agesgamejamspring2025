@@ -6,6 +6,9 @@ public partial class SaveAndLoad : Node
 	public const string POSITION_SAVE_FILE_PATH = "user://positions.save";
 	public const string TIME_SAVE_FILE_PATH = "user://time.save";
 
+	public const string DEFUALT_POSITION_SAVE_FILE_PATH = "res://DefaultData/positions.save";
+	public const string DEFAULT_TIME_SAVE_FILE_PATH = "res://DefaultData/time.save";
+
 	[Export] private Node3D _target { get; set; }
 	[Export] private float _timeBetweenSaves { get; set; } = 1.0f;
 	[Export] private GhostShip _ghostShip { get; set; }
@@ -13,6 +16,7 @@ public partial class SaveAndLoad : Node
 	private List<Vector3> _playerPositions = new List<Vector3>();
 
 	private bool _isSaving = false;
+	private bool _hasResetData = false;
 
 	private float _timer = 0.0f;
 
@@ -37,6 +41,12 @@ public partial class SaveAndLoad : Node
 
 	public override void _Process(double delta)
 	{
+		if(Input.IsKeyPressed(Key.R) && _hasResetData)
+		{
+			_hasResetData = true;
+			ResetToDefaultData();
+		}
+
 		if(!_isSaving)
 			return;
 
@@ -61,6 +71,25 @@ public partial class SaveAndLoad : Node
 		}
 
 		ClearData();
+	}
+
+	public void ResetToDefaultData()
+	{
+		if(!FileAccess.FileExists(POSITION_SAVE_FILE_PATH))
+		{
+			return;
+		}
+		
+		using FileAccess defaultFile = FileAccess.Open(DEFAULT_TIME_SAVE_FILE_PATH, FileAccess.ModeFlags.Read);
+		using FileAccess positionsFile = FileAccess.Open(POSITION_SAVE_FILE_PATH, FileAccess.ModeFlags.Write);
+
+		while (defaultFile.GetPosition() < defaultFile.GetLength())
+		{
+			positionsFile.StoreLine(defaultFile.GetLine());
+		}
+
+		defaultFile.Close();
+		positionsFile.Close();
 	}
 
 	public void SaveData()
