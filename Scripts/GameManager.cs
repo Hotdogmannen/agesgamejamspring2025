@@ -125,16 +125,16 @@ public partial class GameManager : Node3D
 
 		if(_hasGhostShipFinished)
 		{
-			EmitSignal(SignalName.OnLevelEnded, 1, (float)_levelTimer.TimeLeft);
+			EmitSignal(SignalName.OnLevelEnded, 1, (float)(_levelTimer.WaitTime - _levelTimer.TimeLeft));
 			LevelEnededScreen screen =_loseScreen.Instantiate<LevelEnededScreen>();
-			screen.Init((float)_levelTimer.TimeLeft);
+			screen.Init((float)(_levelTimer.WaitTime - _levelTimer.TimeLeft));
 			AddChild(screen);
 		}
 		else
 		{
-			EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
+			EmitSignal(SignalName.OnLevelEnded, 0, (float)(_levelTimer.WaitTime - _levelTimer.TimeLeft));
 			LevelEnededScreen screen =_winScreen.Instantiate<LevelEnededScreen>();
-			screen.Init((float)_levelTimer.TimeLeft);
+			screen.Init((float)(_levelTimer.WaitTime - _levelTimer.TimeLeft));
 			AddChild(screen);
 		}
 
@@ -148,9 +148,9 @@ public partial class GameManager : Node3D
 			return;
 		_levelEnded = true;
 
-		EmitSignal(SignalName.OnLevelEnded, 2, (float)_levelTimer.TimeLeft);
+		EmitSignal(SignalName.OnLevelEnded, 2, (float)(_levelTimer.WaitTime - _levelTimer.TimeLeft));
 		LevelEnededScreen screen =_timesUpScreen.Instantiate<LevelEnededScreen>();
-		screen.Init((float)_levelTimer.TimeLeft);
+		screen.Init((float)(_levelTimer.WaitTime - _levelTimer.TimeLeft));
 		AddChild(screen);
 		_levelTimer.Stop();
 	}
