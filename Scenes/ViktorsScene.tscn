@@ -25,7 +25,6 @@ _timeBetweenSaves = 0.5
 _ghostShip = NodePath("../GhostShip")
 
 [node name="GhostShip" parent="." instance=ExtResource("3_r5ndu")]
-oarSpeed = 1.0
 
 [node name="GameManager" parent="." instance=ExtResource("4_dq1r3")]
 
