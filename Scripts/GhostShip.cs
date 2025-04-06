@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -75,8 +74,6 @@ public partial class GhostShip : Node3D
 		float lerpTime = (_currentTime - startIndex*_timeBetweenSaves)/_timeBetweenSaves;
 		Vector3 newPos = _playerPositions[startIndex].Lerp(_playerPositions[endIndex], lerpTime);
 
-		//RotationDegrees = RotationDegrees.Lerp(RotationDegrees.Rotated(Vector3.Up, Position.AngleTo(newPos)), _currentTime);
-
 		float weight = 1f - Mathf.Exp(-TurningAnimationSharpness * (float)delta);
 
 		float angle = Transform.Basis.Z.SignedAngleTo((Position-newPos).Normalized(),Vector3.Up);
@@ -84,9 +81,6 @@ public partial class GhostShip : Node3D
 		Quaternion q2 = new Quaternion(Transform.Basis.Rotated(Vector3.Up,angle));
 		
 		Basis = new Basis(q1.Slerp(q2,weight));
-		GD.Print(angle);
-
-		//Rotate(Vector3.Up, Position.SignedAngleTo(newPos, Vector3.Up));
 
 		Position = newPos;
 	}
