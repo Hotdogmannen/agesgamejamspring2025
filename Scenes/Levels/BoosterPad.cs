@@ -6,7 +6,6 @@ public partial class BoosterPad : Area3D
 {
     [Export] public float Force {get; set;}
     [Export] public float EffectSharpness {get; set;}
-
     private MeshInstance3D mesh;
     private List<RigidBody3D> collidingBodies = new List<RigidBody3D>();
 
@@ -53,6 +52,7 @@ public partial class BoosterPad : Area3D
             if(Math.Abs(angle) > 15) rb.ApplyTorque(rot);
 
             if(mesh.GetActiveMaterial(0) is StandardMaterial3D material){
+                
                 material.AlbedoColor = new Color(1f,0.5f,0.5f);
             }
         }
