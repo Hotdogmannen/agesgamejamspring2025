@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwm4ixrcj6cql"]
+[gd_scene load_steps=19 format=3 uid="uid://dwm4ixrcj6cql"]
 
 [ext_resource type="PackedScene" uid="uid://vp1hgaqoi3fq" path="res://Scenes/GameManager.tscn" id="1_a113d"]
 [ext_resource type="Script" uid="uid://d3tmt14e2kgsp" path="res://Scripts/SaveAndLoadSystem/SaveAndLoad.cs" id="2_d31q8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bjevhumcu1iol" path="res://Scenes/ModelScenes/rock_2.tscn" id="10_mv52a"]
 [ext_resource type="PackedScene" uid="uid://cbbbloecfxwim" path="res://Scenes/ModelScenes/rock_3.tscn" id="11_otbr7"]
 [ext_resource type="PackedScene" uid="uid://dvgj1w0lekeun" path="res://Scenes/Goal.tscn" id="12_mv52a"]
+[ext_resource type="Environment" uid="uid://dbchqsk3a40oy" path="res://Material/Felix_Environment.tres" id="13_dm2qe"]
 [ext_resource type="PackedScene" uid="uid://hwf2tjye6ymm" path="res://Scenes/VideTestStuff/booster_pad.tscn" id="13_otbr7"]
 [ext_resource type="PackedScene" path="res://Scenes/ModelScenes/Lighthouse.tscn" id="14_5wxa7"]
 
@@ -35,20 +36,6 @@ _data = {
 }
 point_count = 7
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t355s"]
-sky_top_color = Color(0.143632, 0.293692, 0.511907, 1)
-sky_horizon_color = Color(0.436871, 0.684571, 0.870305, 1)
-ground_bottom_color = Color(0.435294, 0.686275, 0.870588, 1)
-ground_horizon_color = Color(0.435294, 0.686275, 0.870588, 1)
-
-[sub_resource type="Sky" id="Sky_07780"]
-sky_material = SubResource("ProceduralSkyMaterial_t355s")
-
-[sub_resource type="Environment" id="Environment_d31q8"]
-background_mode = 2
-sky = SubResource("Sky_07780")
-reflected_light_source = 2
-
 [node name="Root" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_a113d")]
@@ -67,7 +54,7 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7237, 1.52588e-05, 7.4823)
 
 [node name="Water" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(127.448, 0, 0, 0, 1, 0, 0, 0, 127.448, 0, -0.391561, 0)
+transform = Transform3D(500, 0, 0, 0, 1, 0, 0, 0, 500, 0, -0.391561, 0)
 material_override = ExtResource("3_t355s")
 mesh = SubResource("PlaneMesh_07780")
 skeleton = NodePath("../..")
@@ -197,7 +184,7 @@ _gameManager = NodePath("../../GameManager")
 transform = Transform3D(0.93644, -0.113408, 0.331993, -0.0894637, 0.837832, 0.538548, -0.33923, -0.534019, 0.774433, 0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_d31q8")
+environment = ExtResource("13_dm2qe")
 
 [node name="TestBoat" parent="." instance=ExtResource("5_d31q8")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

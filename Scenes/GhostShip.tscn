@@ -653,6 +653,7 @@ BobbingMagnitude = 2.0
 OarAnimationHeight = 20.0
 OarAnimationWidth = 30.0
 OarAnimationSharpness = 10.0
+TurningAnimationSharpness = 3.0
 oarLeft = NodePath("OarLeft")
 oarRight = NodePath("OarRight")
 

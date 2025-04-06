@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -15,6 +16,7 @@ public partial class GhostShip : Node3D
 	[Export] public float OarAnimationHeight {get; set;}
     [Export] public float OarAnimationWidth {get; set;}
     [Export] public float OarAnimationSharpness {get; set;}
+	[Export] public float TurningAnimationSharpness {get; set;}
 
 	[ExportCategory("Oars")]
 	[Export] Node3D oarLeft { get; set; }
@@ -75,9 +77,14 @@ public partial class GhostShip : Node3D
 
 		//RotationDegrees = RotationDegrees.Lerp(RotationDegrees.Rotated(Vector3.Up, Position.AngleTo(newPos)), _currentTime);
 
-		//RotationDegrees.Rotated(Vector3.Up, Position.AngleTo(newPos));
+		float weight = 1f - Mathf.Exp(-TurningAnimationSharpness * (float)delta);
 
-		//LookAt(Position.Lerp(newPos, _currentTime));
+		float angle = Transform.Basis.Z.SignedAngleTo((Position-newPos).Normalized(),Vector3.Up);
+		Quaternion q1 = new Quaternion(Transform.Basis);
+		Quaternion q2 = new Quaternion(Transform.Basis.Rotated(Vector3.Up,angle));
+		
+		Basis = new Basis(q1.Slerp(q2,weight));
+		GD.Print(angle);
 
 		//Rotate(Vector3.Up, Position.SignedAngleTo(newPos, Vector3.Up));
 
@@ -107,7 +114,7 @@ public partial class GhostShip : Node3D
 
         var target = new Vector3(
             (float)Mathf.Cos(animationTime*BobbingSpeed) * BobbingMagnitude,
-            0f,
+            RotationDegrees.Y,
             (float)Mathf.Sin(animationTime*BobbingSpeed+0.2f) * BobbingMagnitude);
         RotationDegrees = target;
     }
