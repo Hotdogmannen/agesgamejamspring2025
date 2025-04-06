@@ -23,6 +23,7 @@ public partial class BoosterPad : Area3D
             if(mesh.GetActiveMaterial(0) is StandardMaterial3D material){
                 material.AlbedoColor = new Color(1f,0.5f,0.5f);
             }
+            Scale = Vector3.One * 1.1f;
             
         }
     }
@@ -37,6 +38,7 @@ public partial class BoosterPad : Area3D
         if(mesh.GetActiveMaterial(0) is StandardMaterial3D material){
                 material.AlbedoColor = material.AlbedoColor.Lerp(new Color(1f,1f,1f),(float)delta * EffectSharpness);
             }
+            Scale = Scale.Lerp(Vector3.One,(float)delta*EffectSharpness);
         
     }
 
