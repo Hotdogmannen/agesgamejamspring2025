@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://hwf2tjye6ymm"]
+[gd_scene load_steps=7 format=3 uid="uid://hwf2tjye6ymm"]
 
 [ext_resource type="Script" uid="uid://b7ppi8w805f6f" path="res://Scenes/Levels/BoosterPad.cs" id="1_rs41y"]
 [ext_resource type="Texture2D" uid="uid://f46bs7qayssj" path="res://booster.png" id="2_0adie"]
+[ext_resource type="AudioStream" uid="uid://chubib7mn37sa" path="res://Audio/boost.wav" id="3_0adie"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wxa7"]
 size = Vector3(5, 1, 5)
@@ -27,6 +28,10 @@ debug_color = Color(0.784314, 0.12549, 0, 0.937255)
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 5, 0, -5, -2.18557e-07, 0, 0, 0)
 mesh = SubResource("QuadMesh_dm2qe")
 surface_material_override/0 = SubResource("StandardMaterial3D_t65c0")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_0adie")
+volume_db = 6.0
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="OnBodyExited"]

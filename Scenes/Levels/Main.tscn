@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://ck70jlwfynm0u" path="res://Material/WaterMaterial.tres" id="3_t355s"]
 [ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/GhostShip.tscn" id="4_07780"]
 [ext_resource type="PackedScene" uid="uid://cd7g03edhvqjq" path="res://Scenes/VideTestStuff/player_boat.tscn" id="5_d31q8"]
-[ext_resource type="Material" uid="uid://cfflaoyirp1j2" path="res://Material/BuoyRopeMaterial.tres" id="5_t65c0"]
+[ext_resource type="Material" path="res://Material/BuoyRopeMaterial.tres" id="5_t65c0"]
 [ext_resource type="PackedScene" uid="uid://drvp4poe30tp" path="res://Scenes/VideTestStuff/ambient_player.tscn" id="6_oi5um"]
 [ext_resource type="Script" uid="uid://scr6sbhn46fh" path="res://Scenes/Levels/PathInstantiate.cs" id="7_saai4"]
 [ext_resource type="PackedScene" uid="uid://gg8bik5u4fhx" path="res://Scenes/VideTestStuff/buoy.tscn" id="8_nl3m6"]
@@ -121,35 +121,27 @@ spawnSpacing = 2.5
 
 [node name="BoosterPad2" parent="Map" instance=ExtResource("13_otbr7")]
 transform = Transform3D(-0.781302, 0, -0.624153, 0, 1, 0, 0.624153, 0, -0.781302, -54.907, -0.385047, 41.698)
-EffectSharpness = 0.0
+EffectSharpness = 0.5
 
 [node name="BoosterPad3" parent="Map" instance=ExtResource("13_otbr7")]
 transform = Transform3D(-0.999087, 0, 0.0427301, 0, 1, 0, -0.0427301, 0, -0.999087, -61.4208, -0.385047, 33.2745)
-EffectSharpness = 0.0
-
-[node name="BoosterPad4" parent="Map" instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.831886, 0, 0.554946, 0, 1, 0, -0.554946, 0, -0.831886, -60.5666, -0.385048, 20.4375)
-EffectSharpness = 0.0
-
-[node name="Buoy4" parent="Map" instance=ExtResource("8_nl3m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5801, -0.343015, 21.7642)
-
-[node name="BoosterPad6" parent="Map" instance=ExtResource("13_otbr7")]
-transform = Transform3D(0.999733, 0, -0.0230885, 0, 1, 0, 0.0230885, 0, 0.999733, 43.306, -0.385048, 14.7428)
-EffectSharpness = 0.0
+EffectSharpness = 0.5
 
 [node name="BoosterPad7" parent="Map" instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.288313, 0, 0.957536, 0, 1, 0, -0.957536, 0, -0.288313, -33.786, -0.385048, -13.8663)
-EffectSharpness = 0.0
+transform = Transform3D(-0.422602, 0, 0.906315, 0, 1, 0, -0.906315, 0, -0.422602, -30.8784, -0.385048, -7.52265)
+EffectSharpness = 0.5
 
 [node name="BoosterPad8" parent="Map" instance=ExtResource("13_otbr7")]
-transform = Transform3D(-0.386518, 0, 0.922282, 0, 1, 0, -0.922282, 0, -0.386518, -16.0866, -0.385048, -13.6982)
-EffectSharpness = 0.0
+transform = Transform3D(-0.363007, 0, 0.931786, 0, 1, 0, -0.931786, 0, -0.363007, -20.1177, -0.385047, -18.892)
+EffectSharpness = 0.5
 
 [node name="BoosterPad9" parent="Map" instance=ExtResource("13_otbr7")]
 transform = Transform3D(-0.23977, 0, -0.970829, 0, 1, 0, 0.970829, 0, -0.23977, -45.7423, -0.385047, 44.0997)
 Force = 5.0
-EffectSharpness = 0.0
+EffectSharpness = 0.5
+
+[node name="Buoy4" parent="Map" instance=ExtResource("8_nl3m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5801, -0.343015, 21.7642)
 
 [node name="Rock11" parent="Map" instance=ExtResource("10_mv52a")]
 transform = Transform3D(43.9352, 168.685, -44.8912, 134.811, -62.1966, -101.772, -110.886, -8.78016, -141.517, 47.5054, 0.550623, 44.4189)
@@ -186,10 +178,6 @@ transform = Transform3D(62.6138, 71.6885, -30.6638, 0.411385, 39.0228, 92.0709, 
 
 [node name="Rock21" parent="Map" instance=ExtResource("10_mv52a")]
 transform = Transform3D(-230.351, -101.094, -243.349, 262.133, -120.938, -197.89, -26.9273, -312.497, 155.309, 10.7984, 0.550623, 4.55482)
-
-[node name="BoosterPad10" parent="Map" instance=ExtResource("13_otbr7")]
-transform = Transform3D(0.941523, 0, -0.336947, 0, 1, 0, 0.336947, 0, 0.941523, 38.0989, -0.385048, 23.8871)
-EffectSharpness = 0.0
 
 [node name="Goal" parent="Map" node_paths=PackedStringArray("_gameManager") instance=ExtResource("12_mv52a")]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 4.78833, -1.43051e-05, -78.9473)
