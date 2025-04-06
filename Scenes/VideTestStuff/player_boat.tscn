@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://cd7g03edhvqjq"]
+[gd_scene load_steps=75 format=4 uid="uid://cd7g03edhvqjq"]
 
 [ext_resource type="Script" uid="uid://cxft3jrlqxa36" path="res://Scripts/VideTestScripts/TestBoatController.cs" id="1_d3d6u"]
 [ext_resource type="Material" path="res://Material/SeatMaterial.tres" id="2_wpl1t"]
@@ -654,6 +654,40 @@ shader_parameter/color = Vector4(1, 1, 1, 0)
 [sub_resource type="Gradient" id="Gradient_0ecec"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
+[sub_resource type="Curve" id="Curve_62av6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.63866, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p3ayg"]
+curve = SubResource("Curve_62av6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpl1t"]
+emission_shape_scale = Vector3(3, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+scale_min = 0.05
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_p3ayg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d3d6u"]
+direction = Vector3(0, 1, 1)
+spread = 10.984
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+scale_min = 0.05
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_p3ayg")
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yhajs"]
 random_pitch = 1.1
 streams_count = 2
@@ -847,13 +881,21 @@ color_gradient = SubResource("Gradient_0ecec")
 metadata/_custom_type_script = "uid://ctm7y24pyjmvy"
 
 [node name="SplashParticlesBack" parent="." instance=ExtResource("6_28its")]
-transform = Transform3D(1, 0, 0, 0, 0.816742, -0.577003, 0, 0.577003, 0.816742, 0, -0.34759, 0.941813)
+transform = Transform3D(1, 0, 0, 0, 0.816742, -0.577003, 0, 0.577003, 0.816742, 0.0189428, -0.34759, 0.986372)
 amount_ratio = 0.0
+process_material = SubResource("ParticleProcessMaterial_wpl1t")
 
 [node name="SplashParticlesFront" parent="." instance=ExtResource("6_28its")]
-transform = Transform3D(1, 0, 0, 0, 0.877724, -0.479167, 0, 0.479167, 0.877724, -0.00184619, -0.261378, -1.55661)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.123106, -0.261378, -1.48698)
 amount = 80
 amount_ratio = 0.0
+process_material = SubResource("ParticleProcessMaterial_d3d6u")
+
+[node name="SplashParticlesFront" parent="SplashParticlesFront" instance=ExtResource("6_28its")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.273757)
+amount = 80
+amount_ratio = 0.0
+process_material = SubResource("ParticleProcessMaterial_d3d6u")
 
 [node name="PaddleAudioStreamLeft" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yhajs")

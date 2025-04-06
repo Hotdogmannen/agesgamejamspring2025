@@ -38,6 +38,7 @@ public partial class TestBoatController : RigidBody3D
 
     GpuParticles3D backParticles;
     GpuParticles3D frontParticles;
+    GpuParticles3D frontParticles2;
     GpuParticles3D oarLeftParticles;
     GpuParticles3D oarRightParticles;
     AudioStreamPlayer3D paddleAudioPlayerLeft;
@@ -63,15 +64,15 @@ public partial class TestBoatController : RigidBody3D
 
         backParticles = GetNode<GpuParticles3D>("SplashParticlesBack");
         frontParticles = GetNode<GpuParticles3D>("SplashParticlesFront");
+        frontParticles2 = frontParticles.GetNode<GpuParticles3D>("SplashParticlesFront");
         oarLeftParticles = oarLeft.GetNode<GpuParticles3D>("SplashParticles");
         oarRightParticles = oarRight.GetNode<GpuParticles3D>("SplashParticles");
     }
 
     public override void _Process(double delta)
     {
-        if(CanMove)
-        {
-            
+        float velocityWeight = 0;
+        if(CanMove){
             bool rowingLeft = Input.IsActionPressed("move_left");
             bool rowingRight = Input.IsActionPressed("move_right");
             bool rowingBack = Input.IsActionPressed("move_backward");
@@ -122,18 +123,19 @@ public partial class TestBoatController : RigidBody3D
                 oarLeftParticles.Emitting = false;
                 }
 
-            float velocityWeight = Fade(Math.Clamp(LinearVelocity.Length()/maxSpeedFOV,0f,1f));
+            velocityWeight = Fade(Math.Clamp(LinearVelocity.Length()/maxSpeedFOV,0f,1f));
             
             float targetFov = Mathf.Lerp(minFOV,maxFOV,velocityWeight);
             camera.Fov = Mathf.Lerp(camera.Fov,targetFov,(float)delta * fovSharpness);
 
             frontParticles.AmountRatio = velocityWeight > 0.7f ? velocityWeight : 0f;
+            frontParticles2.AmountRatio = velocityWeight > 0.7f ? velocityWeight : 0f;
             backParticles.AmountRatio = velocityWeight/2f;
-            
-            UpdateOarAnimation(delta);
-            SetWindAudio(velocityWeight);
         }
+        
 
+        UpdateOarAnimation(delta);
+        SetWindAudio(velocityWeight);
         ApplyBobbingAnimation(delta);
     }
 
