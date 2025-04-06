@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgnl0ogqkooew"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ni2c"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0.470588)
+billboard_keep_scale = true
+use_particle_trails = true
+
+[sub_resource type="Curve" id="Curve_qutt1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.299342, 1), 0.0, 0.0, 0, 0, Vector2(0.532895, 0.64514), -2.63116, -2.63116, 0, 0, Vector2(0.878289, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_coj2d"]
+curve = SubResource("Curve_qutt1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oo4jg"]
+emission_shape_offset = Vector3(-5, 10, 0)
+emission_shape_scale = Vector3(15, 10, 20)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+radial_velocity_min = -5.85002
+radial_velocity_max = 5.84998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_coj2d")
+
+[sub_resource type="Curve" id="Curve_nqi6y"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.501181), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_eos8j"]
+size = 0.2
+sections = 2
+section_length = 3.0
+section_segments = 8
+curve = SubResource("Curve_nqi6y")
+
+[node name="WindParticles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_5ni2c")
+amount = 6
+sub_emitter = NodePath(".")
+lifetime = 2.0
+preprocess = 0.41
+transform_align = 2
+trail_enabled = true
+trail_lifetime = 1.6
+process_material = SubResource("ParticleProcessMaterial_oo4jg")
+draw_pass_1 = SubResource("RibbonTrailMesh_eos8j")
