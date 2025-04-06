@@ -77,6 +77,8 @@ public partial class GameManager : Node3D
 		if(_countDownTime <= 1)
 		{
 			_countDownLabel.Text = "GO!!";
+			EmitSignal(SignalName.OnCountDownFinished);
+			_levelTimer.Start();
 
 			if(_countDownTime <= 0)
 			{
@@ -98,8 +100,6 @@ public partial class GameManager : Node3D
 	{
 		_countDownLabel.Text = "";
 		_isCountdown = false;
-		EmitSignal(SignalName.OnCountDownFinished);
-		_levelTimer.Start();
 	}
 
 	public void OnPlayerEnterGoal()
