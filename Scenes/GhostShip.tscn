@@ -646,7 +646,7 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
 [node name="GhostShip" type="Node3D" node_paths=PackedStringArray("oarLeft", "oarRight")]
 script = ExtResource("1_qy465")
-oarSpeed = 10.0
+oarSpeed = 1.0
 BobbingSpeed = 1.0
 BobbingVelocitySpeedupPercentage = 0.75
 BobbingMagnitude = 2.0
