@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class GameManager : Node3D
@@ -17,12 +18,18 @@ public partial class GameManager : Node3D
 	[ExportCategory("Countdown")]
 	[Export] private float _countDownTime = 5.0f;
 	[Export] private Label _countDownLabel;
+	[Export] private TextureRect _countDownImage;
+	[Export] private float countDownMinScale;
+	[Export] private float countDownMaxScale;
+	[Export] private float countDownGoScale;
+	[Export] private Texture2D[] countdownImages;
 
 	[ExportCategory("Level timer")]
 	[Export] private Timer _levelTimer;
 	[Export] private Label _levelTimerLabel;
 	[Export] private float _levelTime = 300;
 
+	private float _maxTime;
 	private bool _isCountdown = false;
 	private bool _hasGhostShipFinished = false;
 	private bool _panic = false;
@@ -36,6 +43,8 @@ public partial class GameManager : Node3D
 
 		_levelTimer.WaitTime = _levelTime;
 		_isCountdown = true;
+		_maxTime = _countDownTime;
+		_countDownImage.Scale = Vector2.One * countDownMinScale;
     }
 
     public override void _Process(double delta)
@@ -75,21 +84,27 @@ public partial class GameManager : Node3D
 
 		_countDownTime -= delta;
 
+		if(_countDownTime >= 0) {
+			_countDownImage.Texture = countdownImages[Mathf.FloorToInt(_countDownTime)];
+			_countDownImage.Scale = (Vector2.One * countDownMaxScale).Lerp(Vector2.One * countDownMinScale,(_countDownTime/_maxTime));
+		}
+
 		if(_countDownTime <= 1)
 		{
+			_countDownImage.Scale = Vector2.One * countDownGoScale;
 			_countDownLabel.Text = "GO!!";
 			EmitSignal(SignalName.OnCountDownFinished);
 			_levelTimer.Start();
 
+			
+
 			if(_countDownTime <= 0)
 			{
+				_countDownImage.Visible = false;
 				OnCountDownFinishedFunc();
 			}
 		}
-		else
-		{
-        	_countDownLabel.Text = Mathf.FloorToInt(_countDownTime).ToString();
-		}
+		
 	}
 
 	public void OnShipReachedEnd()

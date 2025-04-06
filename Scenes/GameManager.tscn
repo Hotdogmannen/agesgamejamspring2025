@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://vp1hgaqoi3fq"]
+[gd_scene load_steps=10 format=3 uid="uid://vp1hgaqoi3fq"]
 
 [ext_resource type="Script" uid="uid://bovayeuubnfm3" path="res://Scripts/GameManager.cs" id="1_m2tc1"]
+[ext_resource type="Texture2D" uid="uid://qlerakt7p7dh" path="res://countdown_5.png" id="2_bwyv8"]
+[ext_resource type="Texture2D" uid="uid://bxpv2ufy7ki6x" path="res://countdown_go.png" id="2_je8vj"]
+[ext_resource type="Texture2D" uid="uid://dvoilef24on2l" path="res://countdown_1.png" id="3_f5c43"]
+[ext_resource type="Texture2D" uid="uid://b3wyqmvsf7ryr" path="res://countdown_2.png" id="4_8mb02"]
+[ext_resource type="Texture2D" uid="uid://casy3innk8t37" path="res://countdown_3.png" id="5_2ykxs"]
+[ext_resource type="Texture2D" uid="uid://bnmk4mi4tq8" path="res://countdown_4.png" id="6_2wx25"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bwyv8"]
 font_size = 30
@@ -8,10 +14,15 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_m2tc1"]
 font_size = 60
 
-[node name="GameManager" type="Node3D" node_paths=PackedStringArray("_countDownLabel", "_levelTimer", "_levelTimerLabel")]
+[node name="GameManager" type="Node3D" node_paths=PackedStringArray("_countDownLabel", "_countDownImage", "_levelTimer", "_levelTimerLabel")]
 script = ExtResource("1_m2tc1")
 _countDownTime = 6.0
 _countDownLabel = NodePath("TimerCanvas/CountDownText")
+_countDownImage = NodePath("TimerCanvas/TextureRect")
+countDownMinScale = 0.2
+countDownMaxScale = 0.5
+countDownGoScale = 0.6
+countdownImages = Array[Texture2D]([ExtResource("2_je8vj"), ExtResource("3_f5c43"), ExtResource("4_8mb02"), ExtResource("5_2ykxs"), ExtResource("6_2wx25"), ExtResource("2_bwyv8")])
 _levelTimer = NodePath("LevelTimer")
 _levelTimerLabel = NodePath("TimerCanvas/LevelTimer")
 _levelTime = 150.0
@@ -56,5 +67,22 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_m2tc1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TimerCanvas"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -256.0
+offset_right = 320.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(320, 256)
+texture = ExtResource("2_bwyv8")
 
 [connection signal="timeout" from="LevelTimer" to="." method="OnTimerFinished"]
