@@ -5,8 +5,11 @@ public partial class AmbientPlayer : Node
 {
 
     [Export] public Vector2 AudioDelayRange {get; set;}
+    [Export] public AudioStream winSound;
+    [Export] public AudioStream loseSound;
     private AudioStreamPlayer player;
     private AudioStreamPlayer musicPlayer;
+    private AudioStreamPlayer winLosePlayer;
 
     float time;
     float curGoal;
@@ -15,6 +18,7 @@ public partial class AmbientPlayer : Node
         base._Ready();
         player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         musicPlayer = GetNode<AudioStreamPlayer>("MusicPlayer");
+        winLosePlayer = GetNode<AudioStreamPlayer>("WinLosePlayer");
         curGoal = (float)GD.RandRange(AudioDelayRange.X, AudioDelayRange.Y);
 
         OnRaceStart();
@@ -39,6 +43,13 @@ public partial class AmbientPlayer : Node
     }
     public void OnRaceEnd(int type, float time){
         musicPlayer.Stop();
+        if(type == 0){
+            winLosePlayer.Stream = winSound;
+        }
+        else{
+            winLosePlayer.Stream = loseSound;
+        }
+        winLosePlayer.Play();
     }
 
 

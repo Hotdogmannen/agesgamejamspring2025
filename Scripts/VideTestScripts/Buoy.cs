@@ -26,7 +26,9 @@ public partial class Buoy : Node3D
     public void OnBodyEntered(Node body){
         if(body is RigidBody3D rb){
             Vector3 dir = rb.GlobalPosition-GlobalPosition;
-            rb.ApplyImpulse(dir.Normalized() * bounceForce);
+            GD.Print(rb.LinearVelocity.Dot(dir));
+            float impulseForce = Mathf.Max(bounceForce, (-rb.LinearVelocity.Dot(dir))*1.2f);
+            rb.ApplyImpulse(dir.Normalized() * impulseForce);
             SetScale(bounceScale);
             splashParticles.Emitting = true;
             audioPlayer.Play();
