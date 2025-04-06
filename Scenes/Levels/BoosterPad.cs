@@ -49,7 +49,6 @@ public partial class BoosterPad : Area3D
         {
             rb.ApplyForce(Transform.Basis.Z * Force);
             float angle = Mathf.RadToDeg(rb.Transform.Basis.Z.SignedAngleTo(-Transform.Basis.Z,Vector3.Up));
-            GD.Print(angle);
             Vector3 rot = Vector3.Up * Math.Sign(angle);
             if(Math.Abs(angle) > 15) rb.ApplyTorque(rot);
 
