@@ -20,7 +20,7 @@ curve = SubResource("Curve_qutt1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oo4jg"]
 emission_shape_offset = Vector3(-5, 10, 0)
-emission_shape_scale = Vector3(15, 10, 20)
+emission_shape_scale = Vector3(8, 5, 10)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 spread = 0.0
@@ -53,7 +53,7 @@ curve = SubResource("Curve_nqi6y")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_5ni2c")
-amount = 6
+amount = 12
 sub_emitter = NodePath(".")
 lifetime = 2.0
 preprocess = 0.41
