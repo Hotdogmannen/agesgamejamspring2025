@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://ck70jlwfynm0u" path="res://Material/WaterMaterial.tres" id="3_t355s"]
 [ext_resource type="PackedScene" uid="uid://c0ome0na4fvjv" path="res://Scenes/GhostShip.tscn" id="4_07780"]
 [ext_resource type="PackedScene" uid="uid://cd7g03edhvqjq" path="res://Scenes/VideTestStuff/player_boat.tscn" id="5_d31q8"]
-[ext_resource type="Material" path="res://Material/BuoyRopeMaterial.tres" id="5_t65c0"]
+[ext_resource type="Material" uid="uid://cfflaoyirp1j2" path="res://Material/BuoyRopeMaterial.tres" id="5_t65c0"]
 [ext_resource type="PackedScene" uid="uid://drvp4poe30tp" path="res://Scenes/VideTestStuff/ambient_player.tscn" id="6_oi5um"]
 [ext_resource type="Script" uid="uid://scr6sbhn46fh" path="res://Scenes/Levels/PathInstantiate.cs" id="7_saai4"]
 [ext_resource type="PackedScene" uid="uid://gg8bik5u4fhx" path="res://Scenes/VideTestStuff/buoy.tscn" id="8_nl3m6"]
