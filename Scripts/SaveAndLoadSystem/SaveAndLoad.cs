@@ -52,7 +52,7 @@ public partial class SaveAndLoad : Node
 	public void OnLevelEnded(int type, float timeleft)
 	{
 		_isSaving = false;
-		
+
 		//Type == 0 == Win, Only save data if it was better then the last
 		if(type == 0)
 		{

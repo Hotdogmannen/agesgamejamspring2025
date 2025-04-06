@@ -6,6 +6,7 @@ public partial class LevelEnededScreen : Control
 	private PackedScene _gameScene { get; set; }
 	private PackedScene _menuScene { get; set; }
 	[Export] private Label bestTimeLabel { get; set; }
+	[Export] private Label _currentTimeLabel { get; set; }
 
     public override void _Ready()
     {
@@ -15,8 +16,7 @@ public partial class LevelEnededScreen : Control
 		_menuScene = ResourceLoader.Load<PackedScene>("Scenes/Menus/MainMenu.tscn");
     }
 
-
-	public void Init()
+	public void Init(float currentTime)
 	{
 		if (!FileAccess.FileExists(SaveAndLoad.TIME_SAVE_FILE_PATH))
     	{
@@ -36,9 +36,21 @@ public partial class LevelEnededScreen : Control
 
 		float bestTime = (float)json.Data;
 
-		string bestTimeText =  "Best time: " + (int)(bestTime / 60) + ":" + (int)(bestTime % 60);
+		string bestTimeText = "";
+		if(((int)(bestTime % 60)) > 9)
+			bestTimeText =  "Best Time: " + (int)(bestTime / 60) + ":" + (int)(bestTime % 60);
+		else
+			bestTimeText =  "Best Time: " + (int)(bestTime / 60) + ":" + "0" + (int)(bestTime % 60);
 
 		bestTimeLabel.Text = bestTimeText;
+
+		string currentTimeText = "";
+		if(((int)(currentTime % 60)) > 9)
+			currentTimeText =  "Your Time: " + (int)(currentTime / 60) + ":" + (int)(currentTime % 60);
+		else
+			currentTimeText =  "Your Time: " + (int)(currentTime / 60) + ":" + "0" + (int)(currentTime % 60);
+
+		_currentTimeLabel.Text = currentTimeText;
 	}
 
 	public void OnRestart()

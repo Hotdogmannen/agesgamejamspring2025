@@ -112,14 +112,14 @@ public partial class GameManager : Node3D
 		{
 			EmitSignal(SignalName.OnLevelEnded, 1, (float)_levelTimer.TimeLeft);
 			LevelEnededScreen screen =_loseScreen.Instantiate<LevelEnededScreen>();
-			screen.Init();
+			screen.Init((float)_levelTimer.TimeLeft);
 			AddChild(screen);
 		}
 		else
 		{
 			EmitSignal(SignalName.OnLevelEnded, 0, (float)_levelTimer.TimeLeft);
 			LevelEnededScreen screen =_winScreen.Instantiate<LevelEnededScreen>();
-			screen.Init();
+			screen.Init((float)_levelTimer.TimeLeft);
 			AddChild(screen);
 		}
 
@@ -135,7 +135,7 @@ public partial class GameManager : Node3D
 
 		EmitSignal(SignalName.OnLevelEnded, 2, (float)_levelTimer.TimeLeft);
 		LevelEnededScreen screen =_timesUpScreen.Instantiate<LevelEnededScreen>();
-		screen.Init();
+		screen.Init((float)_levelTimer.TimeLeft);
 		AddChild(screen);
 		_levelTimer.Stop();
 	}

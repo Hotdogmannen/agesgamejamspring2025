@@ -36,6 +36,7 @@ CanMove = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.428582, 0, -6.4083)
 _gameManager = NodePath("../GameManager")
 
+[connection signal="OnShipReachedEnd" from="GhostShip" to="GameManager" method="OnShipReachedEnd"]
 [connection signal="OnCountDownFinished" from="GameManager" to="SaveAndLoad" method="StartSaving"]
 [connection signal="OnCountDownFinished" from="GameManager" to="GhostShip" method="StartGhost"]
 [connection signal="OnLevelEnded" from="GameManager" to="SaveAndLoad" method="OnLevelEnded"]
