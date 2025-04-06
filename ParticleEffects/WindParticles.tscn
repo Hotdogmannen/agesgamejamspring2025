@@ -12,26 +12,26 @@ billboard_keep_scale = true
 use_particle_trails = true
 
 [sub_resource type="Curve" id="Curve_qutt1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.299342, 1), 0.0, 0.0, 0, 0, Vector2(0.532895, 0.64514), -2.63116, -2.63116, 0, 0, Vector2(0.878289, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.384868, 0.68615), 0.0, 0.0, 0, 0, Vector2(0.598684, 0.421855), -2.40618, -2.40618, 0, 0, Vector2(0.878289, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [sub_resource type="CurveTexture" id="CurveTexture_coj2d"]
 curve = SubResource("Curve_qutt1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oo4jg"]
-emission_shape_offset = Vector3(-5, 10, 0)
-emission_shape_scale = Vector3(8, 5, 10)
+emission_shape_offset = Vector3(-8, 3, 0)
+emission_shape_scale = Vector3(8, 3, 10)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 spread = 0.0
 initial_velocity_min = 3.0
 initial_velocity_max = 6.0
-angular_velocity_min = -200.0
-angular_velocity_max = 200.0
-orbit_velocity_min = -1.0
-orbit_velocity_max = 1.0
-radial_velocity_min = -5.85002
-radial_velocity_max = 5.84998
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+radial_velocity_min = -2.00002
+radial_velocity_max = 1.99998
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -2.23517e-06
 linear_accel_max = -2.23517e-06
@@ -43,10 +43,10 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.501181), 0.0, 0.0, 0, 0, 
 point_count = 3
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_eos8j"]
-size = 0.2
+size = 0.15
 sections = 2
-section_length = 3.0
-section_segments = 8
+section_length = 2.5
+section_segments = 5
 curve = SubResource("Curve_nqi6y")
 
 [node name="WindParticles" type="Node3D"]
